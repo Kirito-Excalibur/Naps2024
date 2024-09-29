@@ -12,6 +12,7 @@ import {
 import { Link } from "@remix-run/react";
 import { getUser } from "~/session.server";
 import stylesheet from "~/tailwind.css";
+import { useOptionalUser } from "./utils";
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: stylesheet },
@@ -23,6 +24,8 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 };
 
 export default function App() {
+  const user = useOptionalUser();
+
   return (
     <html lang="en" className="h-full">
       <head>
@@ -32,12 +35,18 @@ export default function App() {
         <Links />
       </head>
       <body className="h-full">
-      <header className="flex items-center justify-between bg-slate-800 p-4 text-white">
-        <h1 className="text-3xl font-bold">
+        <header className="flex items-center  bg-[rgb(177,4,14)] p-4 gap-5 text-white">
           <Link to="/editorials">Editorials</Link>
-        </h1>
-        <p></p>
-      </header>
+
+          { user ? (
+            <p>Logout</p>
+          ) : (
+            <p>
+              <Link to="/join">Sign Up</Link>
+              <Link to="/login">Log In </Link>
+            </p>
+          )}
+        </header>
         <Outlet />
         <ScrollRestoration />
         <Scripts />
