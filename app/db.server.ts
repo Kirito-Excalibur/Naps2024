@@ -26,7 +26,7 @@ function getPrismaClient() {
 
     if (!isReadReplicaRegion) {
       // 5433 is the read-replica port
-      databaseUrl.port = "5433";
+      databaseUrl.port = "6543";
     }
   }
 
@@ -39,6 +39,7 @@ function getPrismaClient() {
     datasources: {
       db: {
         url: databaseUrl.toString(),
+        
       },
     },
   });

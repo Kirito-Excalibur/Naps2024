@@ -1,5 +1,5 @@
 import type { User, Note } from "@prisma/client";
-
+import { json } from "@remix-run/node";
 import { prisma } from "~/db.server";
 
 export type { Note } from "@prisma/client";
@@ -50,5 +50,21 @@ export function deleteNote({
 }: Pick<Note, "id"> & { userId: User["id"] }) {
   return prisma.note.deleteMany({
     where: { id, userId },
+  });
+}
+
+export function getAllNotes() {
+  return prisma.note.findMany({
+    select: {
+      id: true,
+      title: true,
+      userId: true,
+      user: {
+        select: {
+          email: true,  // Fetch the email of the user
+        },
+      },
+    },
+    orderBy: { updatedAt: "desc" },
   });
 }

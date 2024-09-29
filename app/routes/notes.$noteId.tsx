@@ -37,7 +37,12 @@ export default function NoteDetailsPage() {
   return (
     <div>
       <h3 className="text-2xl font-bold">{data.note.title}</h3>
-      <p className="py-6">{data.note.body}</p>
+      <p className="py-6"
+        
+        dangerouslySetInnerHTML={{ __html: data.note.body }}
+        style={{ whiteSpace: 'pre-wrap' }}
+        
+        />
       <hr className="my-4" />
       <Form method="post">
         <button

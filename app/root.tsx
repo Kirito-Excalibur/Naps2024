@@ -9,7 +9,7 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
-
+import { Link } from "@remix-run/react";
 import { getUser } from "~/session.server";
 import stylesheet from "~/tailwind.css";
 
@@ -32,6 +32,12 @@ export default function App() {
         <Links />
       </head>
       <body className="h-full">
+      <header className="flex items-center justify-between bg-slate-800 p-4 text-white">
+        <h1 className="text-3xl font-bold">
+          <Link to="/editorials">Editorials</Link>
+        </h1>
+        <p></p>
+      </header>
         <Outlet />
         <ScrollRestoration />
         <Scripts />
