@@ -35,7 +35,7 @@ export default function App() {
         <Links />
       </head>
       <body className="h-full">
-        <header className="flex items-center  bg-[rgb(177,4,14)] p-4 gap-5 text-white">
+        <header className="flex items-center min-h-[100px]  bg-[rgb(177,4,14)] p-4 gap-5 text-white">
         <Link to="/">Home</Link>
           <Link to="/editorials">Editorials</Link>
 
@@ -61,7 +61,7 @@ export default function App() {
             </>
           )}
 
-          <img src="napslogo.webp" width={"250px"} alt="" />
+          <img src="/images/napslogo.webp" height={"250px"} width={"250px"} alt="" />
 
         </header>
         <Outlet />

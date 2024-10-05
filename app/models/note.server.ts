@@ -8,13 +8,17 @@ export function getNote({
   id,
   userId,
 }: Pick<Note, "id"> & {
-  userId: User["id"];
+  userId?: User["id"]; // Make userId optional
 }) {
   return prisma.note.findFirst({
     select: { id: true, body: true, title: true },
-    where: { id, userId },
+    where: {
+      id,
+      ...(userId && { userId }), // Conditionally include userId if provided
+    },
   });
 }
+
 
 export function getNoteListItems({ userId }: { userId: User["id"] }) {
   return prisma.note.findMany({
