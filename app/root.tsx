@@ -30,6 +30,8 @@ export default function App() {
     <html lang="en" className="h-full">
       <head>
         <meta charSet="utf-8" />
+        <meta http-equiv="Cache-Control" content="no-store" />
+
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <Meta />
         <Links />
@@ -38,6 +40,7 @@ export default function App() {
         <header className="flex items-center min-h-[100px]  bg-[rgb(177,4,14)] p-4 gap-5 text-white">
         <Link to="/">Home</Link>
           <Link to="/editorials">Editorials</Link>
+          <Link to="/teams">Our Team</Link>
 
           { user ? (
             <>
