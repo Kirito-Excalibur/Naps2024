@@ -1,6 +1,6 @@
 [build]
 command = "npm run build:remix"
-publish = "public/build"
+publish = "build"
 
 [[redirects]]
 from = "/*"
