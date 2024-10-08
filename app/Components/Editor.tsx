@@ -7,6 +7,7 @@ const Editor = forwardRef((props, ref) => {
     modules: {
       toolbar: [
         [{ header: [1, 2, false] }],
+        [{ 'align': [] }],
         ["bold", "italic", "underline", "strike", "blockquote"],
         [{ list: "ordered" }, { list: "bullet" }, { indent: "-1" }, { indent: "+1" }],
         ["link", "image"], // Image button to allow image insertion
@@ -63,7 +64,7 @@ const Editor = forwardRef((props, ref) => {
   }, [quill]);
 
   return (
-    <div style={{ width: 1000, height: 300 }}>
+    <div className="h-[400px]">
       <div ref={quillRef} />
     </div>
   );

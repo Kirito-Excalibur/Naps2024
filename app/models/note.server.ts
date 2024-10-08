@@ -11,7 +11,7 @@ export function getNote({
   userId?: User["id"]; // Make userId optional
 }) {
   return prisma.note.findFirst({
-    select: { id: true, body: true, title: true },
+    select: { id: true, body: true, title: true, user:true },
     where: {
       id,
       ...(userId && { userId }), // Conditionally include userId if provided

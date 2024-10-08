@@ -18,7 +18,7 @@ export default function NotesPage() {
 
   return (
     <div className="flex h-full min-h-screen flex-col">
-      <header className="flex items-center justify-between bg-slate-800 p-4 text-white">
+      {/* <header className="flex items-center justify-between bg-slate-800 p-4 text-white">
         <h1 className="text-3xl font-bold">
           <Link to=".">Notes</Link>
         </h1>
@@ -31,7 +31,7 @@ export default function NotesPage() {
             Logout
           </button>
         </Form>
-      </header>
+      </header> */}
 
       <main className="flex h-full bg-white">
         <div className="h-full w-80 border-r bg-gray-50">

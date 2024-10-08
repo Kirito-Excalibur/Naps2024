@@ -41,7 +41,6 @@ export default function App() {
 
           { user ? (
             <>
-            <p>Logout</p>
             <Link to="/notes">My Notes</Link>
             
             <Form action="/logout" method="post">

@@ -74,7 +74,7 @@ export default function NewNotePage() {
         style={{
           display: "flex",
           flexDirection: "column",
-          gap: 8,
+          
           width: "100%",
         }}
       >
@@ -84,7 +84,7 @@ export default function NewNotePage() {
             <input
               ref={titleRef}
               name="title"
-              className="flex-1 rounded-md border-2 border-blue-500 px-3 text-lg leading-loose"
+              className="flex-1 rounded-md border-2 focus:border-blue-500 px-3 text-lg leading-loose"
               aria-invalid={actionData?.errors?.title ? true : undefined}
               aria-errormessage={
                 actionData?.errors?.title ? "title-error" : undefined
@@ -98,13 +98,13 @@ export default function NewNotePage() {
           ) : null}
         </div>
 
-        <div>
-          <label className="flex w-full flex-col gap-1">
+        <div className="h-[500px]">
+          <div className="flex w-full flex-col gap-1">
             <span>Body: </span>
-            <div className="w-full flex-1 rounded-md border-2 border-blue-500 px-3 py-2 text-lg leading-6">
-              <Editor ref={quillRef} />
+            <div className="w-full  flex-1 rounded-md  px-3 py-2 text-lg leading-6">
+              <Editor ref={quillRef}  />
             </div>
-          </label>
+          </div>
           {actionData?.errors?.body ? (
             <div className="pt-1 text-red-700" id="body-error">
               {actionData.errors.body}
