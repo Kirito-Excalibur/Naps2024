@@ -20,7 +20,7 @@ export default function Index() {
   const quillRef = useRef<any>();
   return (
     <>
-      <h1 className="text-2xl text-center my-4">Editorials</h1>
+      {/* <h1 className="text-2xl text-center my-4">Editorials</h1> */}
 
       <div className="p-6 grid gap-8">
         {/* First larger post on the left */}

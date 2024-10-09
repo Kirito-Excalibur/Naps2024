@@ -9,7 +9,7 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
-import { Link,Form } from "@remix-run/react";
+import { Link, Form, NavLink, useNavigation } from "@remix-run/react";
 import { getUser } from "~/session.server";
 import stylesheet from "~/tailwind.css";
 import { useOptionalUser } from "./utils";
@@ -25,7 +25,8 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 
 export default function App() {
   const user = useOptionalUser();
-
+  const navigation=useNavigation()
+  const isLoading = navigation.state === "loading"; 
   return (
     <html lang="en" className="h-full">
       <head>
@@ -37,24 +38,52 @@ export default function App() {
         <Links />
       </head>
       <body className="h-full">
-        <header className="flex items-center min-h-[100px]  bg-[rgb(177,4,14)] p-4 gap-5 text-white">
-        <Link to="/">Home</Link>
-          <Link to="/editorials">Editorials</Link>
-          <Link to="/teams">Our Team</Link>
-
-          { user ? (
-            <>
-            <Link to="/notes">My Notes</Link>
-            
-            <Form action="/logout" method="post">
-          <button
-            type="submit"
-            className="rounded bg-slate-600 px-4 py-2 text-blue-100 hover:bg-blue-500 active:bg-blue-600"
+          {/* Loading Indicator at the Top */}
+      {isLoading && (
+        <div className="fixed top-0 left-0 w-full h-1 bg-blue-500">
+          <div className="h-full bg-blue-700 animate-pulse"></div>
+        </div>
+      )}
+        <header className="flex justify-between items-center min-h-[100px]  bg-[rgb(177,4,14)] p-4 gap-5 text-white">
+          
+          <h1 className="text-3xl sm:text-5xl">News And Publications</h1>
+          <img
+            src="/images/napslogo.webp"
+            height={"250px"}
+            width={"250px"}
+            alt=""
+          />
+        </header>
+        <div className="py-6 flex text-m flex-row gap-6 px-4 justify-center items-center border ">
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? "text-red-500" : "text-black"
+            }
+            to="/"
           >
-            Logout
-          </button>
-        </Form>
+            Home
+          </NavLink>
+          <NavLink  className={({ isActive }) =>
+              isActive ? "text-red-500" : "text-black"
+            } to="/editorials">Editorials</NavLink>
+          <NavLink  className={({ isActive }) =>
+              isActive ? "text-red-500 whitespace-nowrap" : "text-black whitespace-nowrap"
+            } to="/teams">Our Team</NavLink>
 
+          {user ? (
+            <>
+              <NavLink className={({ isActive }) =>
+              isActive ? "text-red-500 whitespace-nowrap" : "text-black whitespace-nowrap"
+            } to="/notes">My Notes</NavLink>
+
+              <Form action="/logout" method="post">
+                <button
+                  type="submit"
+                  className="rounded bg-slate-600 px-4 py-2 text-blue-100 hover:bg-blue-500 active:bg-blue-600"
+                >
+                  Logout
+                </button>
+              </Form>
             </>
           ) : (
             <>
@@ -62,10 +91,7 @@ export default function App() {
               <Link to="/login">Log In </Link>
             </>
           )}
-
-          <img src="/images/napslogo.webp" height={"250px"} width={"250px"} alt="" />
-
-        </header>
+        </div>
         <Outlet />
         <ScrollRestoration />
         <Scripts />

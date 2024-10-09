@@ -13,7 +13,7 @@ function editorials_indexPage() {
   const data = useLoaderData<typeof loader>();
   return (
     <>
-      <h1 className="text-2xl text-center my-4">Editorials</h1>
+      {/* <h1 className="text-2xl text-center my-4">Editorials</h1> */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
         {data.noteListItems.map((note) => (
           <NavLink to={note.id}
