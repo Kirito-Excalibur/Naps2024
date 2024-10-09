@@ -1,9 +1,9 @@
 [build]
 command = "npm run build"
-publish = "public/build"
-functions= "netlify/functions"
+publish = "public"                  # Ensure this points to your static files
+functions = "netlify/functions"
 
 [[redirects]]
 from = "/*"
-to = "/"
+to = "/.netlify/functions/server"   # Redirect to the server function
 status = 200
