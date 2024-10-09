@@ -49,8 +49,7 @@ export default function App() {
           <h1 className="text-3xl sm:text-5xl">News And Publications</h1>
           <img
             src="/images/napslogo.webp"
-            height={"250px"}
-            width={"250px"}
+        className="w-[150px] sm:w-[250px]"
             alt=""
           />
         </header>
