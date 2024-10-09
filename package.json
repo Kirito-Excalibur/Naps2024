@@ -34,6 +34,7 @@
     "@prisma/client": "^4.16.2",
     "@remix-run/css-bundle": "^2.11.2",
     "@remix-run/express": "^2.11.2",
+    "@remix-run/netlify": "^1.19.3",
     "@remix-run/node": "^2.11.2",
     "@remix-run/react": "^2.11.2",
     "bcryptjs": "^2.4.3",

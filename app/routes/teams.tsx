@@ -18,7 +18,7 @@ function teams() {
     { name: "Rahul Sharma", position: "Event's Head" },
     { name: "Anushka Singh", position: "Senior Executive Member" },
     { name: "Kashish Kumar Singh", position: "Senior Executive Member" },
-    { name: "Harshit Sagar", position: "Tata of Naps" },
+    { name: "Harshit Sagar", position: "General Secretary" },
     { name: "Priyanshu Kumar", position: "Treasurer" },
     { name: "Gauri Malviya", position: "Joint Secretary" },
     { name: "Kumari Richa", position: "Joint Secretary" },
@@ -35,7 +35,7 @@ function teams() {
     { name: "Piyush Meena", position: "Content and Social Media Coordinator" },
     { name: "Nikhil Simon Toppo", position: "Technical Coordinator" },
     { name: "Md. Raja Istekhar", position: "Executive Member" },
-    { name: "Dishaan Dilip", position: "Executive Member" },
+    { name: "Dishaan D", position: "Executive Member" },
   ];
 
   return (
