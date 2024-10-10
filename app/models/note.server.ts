@@ -67,6 +67,7 @@ export function getAllNotes() {
       thumbnail:true,
       user: {
         select: {
+          name:true,
           email: true, // Fetch the email of the user
         },
       },

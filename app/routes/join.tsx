@@ -19,27 +19,37 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 
 export const action = async ({ request }: ActionFunctionArgs) => {
   const formData = await request.formData();
+  const name = formData.get("name");
   const email = formData.get("email");
   const password = formData.get("password");
   const redirectTo = safeRedirect(formData.get("redirectTo"), "/");
 
   if (!validateEmail(email)) {
     return json(
-      { errors: { email: "Email is invalid", password: null } },
+      { errors: { name: null, email: "Email is invalid", password: null } },
+      { status: 400 },
+    );
+  }
+  
+  if (typeof name !== "string" || name.length === 0) {
+    return json(
+      { errors: { email: null, password: null, name: "Name is required" } },
       { status: 400 },
     );
   }
 
   if (typeof password !== "string" || password.length === 0) {
     return json(
-      { errors: { email: null, password: "Password is required" } },
+      { errors: { email: null, name: null, password: "Password is required" } },
       { status: 400 },
     );
   }
 
   if (password.length < 8) {
     return json(
-      { errors: { email: null, password: "Password is too short" } },
+      {
+        errors: { email: null, name: null, password: "Password is too short" },
+      },
       { status: 400 },
     );
   }
@@ -51,13 +61,14 @@ export const action = async ({ request }: ActionFunctionArgs) => {
         errors: {
           email: "A user already exists with this email",
           password: null,
+          name:null,
         },
       },
       { status: 400 },
     );
   }
 
-  const user = await createUser(email, password);
+  const user = await createUser(email, password, name);
 
   return createUserSession({
     redirectTo,
@@ -75,12 +86,15 @@ export default function Join() {
   const actionData = useActionData<typeof action>();
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
+  const nameRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (actionData?.errors?.email) {
       emailRef.current?.focus();
     } else if (actionData?.errors?.password) {
       passwordRef.current?.focus();
+    } else if (actionData?.errors?.name) {
+      nameRef.current?.focus();
     }
   }, [actionData]);
 
@@ -88,6 +102,37 @@ export default function Join() {
     <div className="flex min-h-full flex-col justify-center">
       <div className="mx-auto w-full max-w-md px-8">
         <Form method="post" className="space-y-6">
+
+        <div>
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Name
+            </label>
+            <div className="mt-1">
+              <input
+                ref={nameRef}
+                id="name"
+                required
+                // eslint-disable-next-line jsx-a11y/no-autofocus
+                autoFocus={true}
+                name="name"
+                type="text"
+                autoComplete="name"
+                aria-invalid={actionData?.errors?.name ? true : undefined}
+                aria-describedby="name-error"
+                className="w-full rounded border border-gray-500 px-2 py-1 text-lg"
+              />
+              {actionData?.errors?.name ? (
+                <div className="pt-1 text-red-700" id="name-error">
+                  {actionData.errors.name}
+                </div>
+              ) : null}
+            </div>
+          </div>
+
+
           <div>
             <label
               htmlFor="email"
