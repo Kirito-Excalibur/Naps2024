@@ -45,7 +45,7 @@ export default function NoteDetailsPage() {
         Author name:- {data.note.user.email}
       </h3>
       <p
-        className="py-6 flex justify-center align-center items-center flex-col text-base md:text-lg"
+        className="py-6 flex justify-center break-word align-center items-center flex-col text-base md:text-lg"
         dangerouslySetInnerHTML={{ __html: data.note.body }}
         style={{ whiteSpace: 'pre-wrap' }}
       />
