@@ -17,11 +17,15 @@ function editorials_indexPage() {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
         {data.noteListItems.map((note) => (
           <NavLink to={note.id}
-            className="border border-black p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow"
+            className="w-fit border border-black p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow"
             key={note.id}
           >
-            <img src="/images/thumb.jpeg" alt="Thumnail Here" />
-            <h2 className="font-bold text-lg mb-2">{note.title}</h2>
+             <img
+           
+    // Fixed width and height with object-cover
+    src={note.thumbnail || "/images/thumb.jpeg"}
+    alt="Thumbnail Here"
+  /> <h2 className="font-bold text-lg mb-2">{note.title}</h2>
             <p className="text-sm text-gray-500">{note.user.email}</p>
           </NavLink>
         ))}

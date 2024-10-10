@@ -50,11 +50,11 @@ export default function App() {
         </div>
       )}
       <header className="bg-[rgb(177,4,14)] p-4 text-white">
-        <div className="flex justify-between items-center">
-          <h1 className="text-3xl sm:text-5xl">News And Publications</h1>
+        <div className="flex justify-between  items-center">
+          <h1 className="text-3xl sm:text-5xl hidden sm:block">News And Publication Society</h1>
           <img
             src="/images/napslogo.webp"
-            className="w-[100px] sm:w-[150px]"
+            className="w-[200px] sm:w-[250px]"
             alt="Logo"
           />
           
@@ -86,11 +86,11 @@ export default function App() {
       <nav
           className={`${
             menuOpen ? "block" : "hidden"
-          } sm:flex flex flex-col sm:flex-row sm:justify-center gap-4 mt-4 sm:mt-0 sm:items-center`}
+          } sm:flex flex   px-4 shadow-lg py-4 sm:shadow-lg flex-col sm:flex-row sm:justify-center gap-4 mt-4 sm:mt-0 sm:items-center`}
         >
           <NavLink
             className={({ isActive }) =>
-              isActive ? "text-red-500" : "text-black"
+              isActive ? "text-[rgb(177,4,14)]" : "text-black"
             }
             to="/"
           >
@@ -98,7 +98,7 @@ export default function App() {
           </NavLink>
           <NavLink
             className={({ isActive }) =>
-              isActive ? "text-red-500" : "text-black"
+              isActive ? "text-[rgb(177,4,14)]" : "text-black"
             }
             to="/editorials"
           >
@@ -106,7 +106,15 @@ export default function App() {
           </NavLink>
           <NavLink
             className={({ isActive }) =>
-              isActive ? "text-red-500" : "text-black"
+              isActive ? "text-[rgb(177,4,14)]" : "text-black"
+            }
+            to="/epistle"
+          >
+            Epistle
+          </NavLink>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? "text-[rgb(177,4,14)]" : "text-black"
             }
             to="/teams"
           >
@@ -117,7 +125,7 @@ export default function App() {
             <>
               <NavLink
                 className={({ isActive }) =>
-                  isActive ? "text-red-500" : "text-black"
+                  isActive ? "text-[rgb(177,4,14)]" : "text-black"
                 }
                 to="/notes"
               >
@@ -134,12 +142,12 @@ export default function App() {
             </>
           ) : (
             <>
-              <Link className="mt-2 sm:mt-0 text-white" to="/join">
+              {/* <Link className="mt-2 sm:mt-0 text-black" to="/join">
                 Sign Up
               </Link>
-              <Link className="mt-2 sm:mt-0 text-white" to="/login">
+              <Link className="mt-2 sm:mt-0 text-black" to="/login">
                 Log In
-              </Link>
+              </Link> */}
             </>
           )}
         </nav>

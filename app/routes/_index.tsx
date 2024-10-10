@@ -29,7 +29,7 @@ export default function Index() {
             to={`editorials/${data.noteListItems[0].id}`}
             className="col-span-1 sm:col-span-2 border border-black p-5 rounded-lg shadow-lg"
           >
-            <img src="/images/thumb.jpeg" alt="Thumbnail Here" />
+            <img src={data.noteListItems[0].thumbnail||"/images/thumb.jpeg"} alt="Thumbnail Here" />
             <h2 className="font-bold text-xl mb-2">
               {data.noteListItems[0].title}
             </h2>
@@ -46,7 +46,7 @@ export default function Index() {
                 className="border border-black p-4 rounded-lg shadow-md"
                 key={note.id}
               >
-                <img src="/images/thumb.jpeg" alt="Thumbnail Here" />
+                <img src={note.thumbnail||"/images/thumb.jpeg"} alt="Thumbnail Here" />
                 <h2 className="font-bold text-lg mb-2">{note.title}</h2>
                 <p className="text-sm text-gray-500">{note.user.email}</p>
               </Link>
@@ -64,7 +64,7 @@ export default function Index() {
               className="border border-black p-4 rounded-lg shadow-md"
               key={note.id}
             >
-              <img src="/images/thumb.jpeg" alt="Thumbnail Here" />
+              <img src={note.thumbnail||"/images/thumb.jpeg"} alt="Thumbnail Here" />
               <h2 className="font-bold text-lg mb-2">{note.title}</h2>
               <p className="text-sm text-gray-500">{note.user.email}</p>
             </Link>
@@ -79,7 +79,7 @@ export default function Index() {
               className="border border-black p-4 rounded-lg shadow-md"
               key={note.id}
             >
-              <img src="/images/thumb.jpeg" alt="Thumbnail Here" />
+              <img src={note.thumbnail||"/images/thumb.jpeg"} alt="Thumbnail Here" />
               <h2 className="font-bold text-lg mb-2">{note.title}</h2>
               <p className="text-sm text-gray-500 break-words">{note.user.email}</p>
             </Link>
