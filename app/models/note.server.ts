@@ -11,14 +11,13 @@ export function getNote({
   userId?: User["id"]; // Make userId optional
 }) {
   return prisma.note.findFirst({
-    select: { id: true, body: true, title: true, user:true },
+    select: { id: true, body: true, title: true, user: true, thumbnail: true },
     where: {
       id,
       ...(userId && { userId }), // Conditionally include userId if provided
     },
   });
 }
-
 
 export function getNoteListItems({ userId }: { userId: User["id"] }) {
   return prisma.note.findMany({
@@ -32,13 +31,15 @@ export function createNote({
   body,
   title,
   userId,
-}: Pick<Note, "body" | "title"> & {
+  thumbnail,
+}: Pick<Note, "body" | "title" | "thumbnail"> & {
   userId: User["id"];
 }) {
   return prisma.note.create({
     data: {
       title,
       body,
+      thumbnail,
       user: {
         connect: {
           id: userId,
@@ -65,7 +66,7 @@ export function getAllNotes() {
       userId: true,
       user: {
         select: {
-          email: true,  // Fetch the email of the user
+          email: true, // Fetch the email of the user
         },
       },
     },

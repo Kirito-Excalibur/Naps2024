@@ -34,8 +34,10 @@ export const action = async ({ params, request }: ActionFunctionArgs) => {
 export default function NoteDetailsPage() {
   const data = useLoaderData<typeof loader>();
 
+  const displayImage= data.note.thumbnail || ""
   return (
     <div>
+      <img width={"250px"} src={displayImage} alt="" />
       <h3 className="text-2xl font-bold">{data.note.title}</h3>
       <p className="py-6"
         
