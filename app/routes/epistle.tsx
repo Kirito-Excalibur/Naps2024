@@ -10,7 +10,6 @@ function epistle() {
 
   return (
     <>
-      <h1 className="text-2xl text-center my-4">Our Team</h1>
       <div className="grid justify-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-4 p-14">
         {items.map((member) => (
           <div className=" items-center border-black p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow">
