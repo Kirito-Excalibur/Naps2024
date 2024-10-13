@@ -4,13 +4,13 @@ import { json } from "@remix-run/react";
 
 import { getAllNotes } from "~/models/note.server";
 
-export const loader = async () => {
-  const noteListItems = await getAllNotes();
-  return json({ noteListItems });
-};
+// export const loader = async () => {
+//   const noteListItems = await getAllNotes();
+//   return json({ noteListItems });
+// };
 
 const Editorials = () => {
-  const data = useLoaderData<typeof loader>();
+  // const data = useLoaderData<typeof loader>();
 
   return (
     <>

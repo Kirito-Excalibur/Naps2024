@@ -11,8 +11,8 @@ function epistle() {
   return (
     <>
       <div className="grid justify-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-4 p-14">
-        {items.map((member) => (
-          <div className=" items-center border-black p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+        {items.map((member,index) => (
+          <div key={index} className=" items-center border-black p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow">
             <img
               src={member.url}
            

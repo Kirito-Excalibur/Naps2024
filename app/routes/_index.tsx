@@ -25,18 +25,23 @@ export default function Index() {
       <div className="p-6 grid gap-8">
         {/* First larger post on the left */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-          <Link
-            to={`editorials/${data.noteListItems[0].id}`}
-            className="col-span-1 sm:col-span-2 border border-black p-5 rounded-lg shadow-lg"
-          >
-            <img src={data.noteListItems[0].thumbnail||"/images/thumb.jpeg"} alt="Thumbnail Here" />
-            <h2 className="font-bold text-xl mb-2">
-              {data.noteListItems[0].title}
-            </h2>
-            <p className="text-sm text-gray-500">
-              {data.noteListItems[0].user.email}
-            </p>
-          </Link>
+        <Link
+  to={`editorials/${data.noteListItems[0].id}`}
+  className="col-span-1 sm:col-span-2 border border-black p-5 rounded-lg shadow-lg flex flex-col items-center justify-center"
+>
+  <div>
+  <img src={data.noteListItems[0].thumbnail || "/images/thumb.jpeg"} alt="Thumbnail Here" className="mb-4" />
+  <h2 className="font-bold text-xl mb-2">
+    {data.noteListItems[0].title}
+  </h2>
+  <p className="text-sm text-gray-500">
+    {data.noteListItems[0].user.name}
+  </p>
+  </div>
+
+</Link>
+
+
 
           {/* Two posts in columns */}
           <div className="grid grid-cols-1 gap-6">
@@ -48,7 +53,7 @@ export default function Index() {
               >
                 <img src={note.thumbnail||"/images/thumb.jpeg"} alt="Thumbnail Here" />
                 <h2 className="font-bold text-lg mb-2">{note.title}</h2>
-                <p className="text-sm text-gray-500">{note.user.email}</p>
+                <p className="text-sm text-gray-500">{note.user.name}</p>
               </Link>
             ))}
           </div>
@@ -66,7 +71,7 @@ export default function Index() {
             >
               <img src={note.thumbnail||"/images/thumb.jpeg"} alt="Thumbnail Here" />
               <h2 className="font-bold text-lg mb-2">{note.title}</h2>
-              <p className="text-sm text-gray-500">{note.user.email}</p>
+              <p className="text-sm text-gray-500">{note.user.name}</p>
             </Link>
           ))}
         </div>
@@ -81,7 +86,7 @@ export default function Index() {
             >
               <img src={note.thumbnail||"/images/thumb.jpeg"} alt="Thumbnail Here" />
               <h2 className="font-bold text-lg mb-2">{note.title}</h2>
-              <p className="text-sm text-gray-500 break-words">{note.user.email}</p>
+              <p className="text-sm text-gray-500 break-words">{note.user.name}</p>
             </Link>
           ))}
         </div>

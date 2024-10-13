@@ -42,8 +42,8 @@ function teams() {
     <>
       <h1 className="text-2xl text-center my-4">Our Team</h1>
       <div className="grid justify-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-14">
-        {team.slice(0,12).map((member) => (
-          <div className=" items-center border-black p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+        {team.slice(0,12).map((member,index) => (
+          <div key={index} className=" items-center border-black p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow">
             <img
               src={`/images/Team/${member.name}.jpg`}
               className="w-[300px] h-[400px] object-cover "
