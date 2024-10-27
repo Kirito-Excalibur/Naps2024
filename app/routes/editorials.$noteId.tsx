@@ -36,7 +36,7 @@ export default function NoteDetailsPage() {
   const data = useLoaderData<typeof loader>();
 
   return (
-    <div className="p-4 max-w-4xl mx-auto">
+    <div className="p-4 max-w-4xl mx-auto font-serif">
       <h3 className="text-2xl font-bold text-center md:text-left">
         {data.note.title}
       </h3>

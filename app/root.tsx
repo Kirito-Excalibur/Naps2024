@@ -87,20 +87,28 @@ export default function App() {
         <nav
           className={`${
             menuOpen ? "block" : "hidden"
-          } sm:flex flex   px-4 shadow-lg py-4 sm:shadow-lg flex-col sm:flex-row sm:justify-center gap-4 mt-4 sm:mt-0 sm:items-center`}
+          } sm:flex flex box-border   px-4 shadow-lg py-4 sm:shadow-lg flex-col sm:flex-row sm:justify-center gap-4 mt-4 sm:mt-0 sm:items-center`}
         >
           <NavLink
             className={({ isActive }) =>
-              isActive ? "text-[rgb(177,4,14)]" : "text-black"
+              isActive
+                ? "text-[rgb(177,4,14)] "
+                : "relative border-b-2 border-white after:absolute after:left-1/2 after:bottom-0 after:w-0 after:h-[2px] after:bg-[rgb(177,4,14)] after:transition-all after:duration-500 hover:after:w-full hover:after:translate-x-[-50%]"
             }
             to="/"
             onClick={toggleMenu}
           >
             Home
           </NavLink>
+   
+
+
+
           <NavLink
             className={({ isActive }) =>
-              isActive ? "text-[rgb(177,4,14)]" : "text-black"
+              isActive
+                ? "text-[rgb(177,4,14)]"
+                : "relative border-b-2 border-white after:absolute after:left-1/2 after:bottom-0 after:w-0 after:h-[2px] after:bg-[rgb(177,4,14)] after:transition-all after:duration-500 hover:after:w-full hover:after:translate-x-[-50%]"
             }
             to="/editorials"
             onClick={toggleMenu}
@@ -109,7 +117,9 @@ export default function App() {
           </NavLink>
           <NavLink
             className={({ isActive }) =>
-              isActive ? "text-[rgb(177,4,14)]" : "text-black"
+              isActive
+                ? "text-[rgb(177,4,14)]"
+                : "relative border-b-2 border-white after:absolute after:left-1/2 after:bottom-0 after:w-0 after:h-[2px] after:bg-[rgb(177,4,14)] after:transition-all after:duration-500 hover:after:w-full hover:after:translate-x-[-50%]"
             }
             to="/epistle"
             onClick={toggleMenu}
@@ -118,7 +128,9 @@ export default function App() {
           </NavLink>
           <NavLink
             className={({ isActive }) =>
-              isActive ? "text-[rgb(177,4,14)]" : "text-black"
+              isActive
+                ? "text-[rgb(177,4,14)]"
+                : "relative border-b-2 border-white after:absolute after:left-1/2 after:bottom-0 after:w-0 after:h-[2px] after:bg-[rgb(177,4,14)] after:transition-all after:duration-500 hover:after:w-full hover:after:translate-x-[-50%]"
             }
             to="/teams"
             onClick={toggleMenu}
