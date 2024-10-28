@@ -100,9 +100,6 @@ export default function App() {
           >
             Home
           </NavLink>
-   
-
-
 
           <NavLink
             className={({ isActive }) =>

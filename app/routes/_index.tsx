@@ -12,7 +12,7 @@ export const loader = async () => {
   return json({ noteListItems });
 };
 
-export const meta: MetaFunction = () => [{ title: "Remix Notes" }];
+export const meta: MetaFunction = () => [{ title: "News And Publication Society" }];
 
 export default function Index() {
   const data = useLoaderData<typeof loader>();
