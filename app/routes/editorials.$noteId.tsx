@@ -36,16 +36,17 @@ export default function NoteDetailsPage() {
   const data = useLoaderData<typeof loader>();
 
   return (
-    <div className="p-4 max-w-4xl mx-auto font-serif">
-      <h3 className="text-2xl font-bold text-center md:text-left">
+    <div className="p-4 max-w-4xl mx-auto ">
+      <h3 className="text-2xl font-bold text-center md:text-left  font-tinos">
         {data.note.title}
       </h3>
 
-      <h3>
+      <h3 className="font-tinos">
+        
         Author name:- {data.note.user.email}
       </h3>
       <p
-        className="py-6 flex justify-center break-word align-center items-center flex-col text-base md:text-lg"
+        className="font-tinos py-6 flex justify-center break-word align-center items-center flex-col text-base md:text-lg"
         dangerouslySetInnerHTML={{ __html: data.note.body }}
         style={{ whiteSpace: 'pre-wrap' }}
       />
