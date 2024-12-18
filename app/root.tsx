@@ -1,6 +1,7 @@
 import { cssBundleHref } from "@remix-run/css-bundle";
 import type { LinksFunction, LoaderFunctionArgs } from "@remix-run/node";
 import { json } from "@remix-run/node";
+import "remixicon/fonts/remixicon.css"
 import {
   Links,
   LiveReload,
@@ -177,6 +178,77 @@ export default function App() {
         <Scripts />
         <LiveReload />
       </body>
+
+      <footer className="bg-gray-900 text-gray-300">
+        
+                
+            <div className="flex justify-center space-x-4 mt-6" >
+                <a href="#" aria-label="Facebook" className="hover:scale-110 transition mt-6 ">
+                <i className="ri-facebook-circle-fill ri-2x"></i>
+                </a>
+                <a href="#" aria-label="Instagram" className="hover:scale-110 transition mt-6">
+                    
+                </a>
+                <a href="#" aria-label="Twitter" className="hover:scale-110 transition mt-6">
+                    
+                </a>
+                <a href="#" aria-label="LinkedIn" className="hover:scale-110 transition mt-6">
+                    
+                </a>
+            </div>
+      
+
+        
+        <div className="container mx-auto px-6 py-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+    
+            <div>
+                <h3 className="text-white text-xl font-semibold mb-4 hover:text-red-400">About Us</h3>
+                <p className="text-gray-400 text-sm mb-4">
+                     Insightful editorials, and a platform for young voices.
+                </p>
+                <a href="#" className="text-teal-400 hover:underline text-sm">Learn More About Us</a>
+            </div>
+
+            
+            <div>
+                <h3 className="text-white text-xl font-semibold mb-4 hover:text-red-400">Quick Links</h3>
+                <ul className="text-gray-400 text-sm space-y-2">
+                    <li><a href="#" className="hover:text-teal-400">Home</a></li>
+                    <li><a href="#" className="hover:text-teal-400">Editorial</a></li>
+                    <li><a href="#" className="hover:text-teal-400">Epistle</a></li>
+                    <li><a href="#" className="hover:text-teal-400">Our Team</a></li>
+                    
+                </ul>
+            </div>
+
+            
+            <div>
+                <h3 className="text-white text-xl font-semibold mb-4 hover:text-red-400">Publications & Resources</h3>
+                <ul className="text-gray-400 text-sm space-y-2">
+                    <li><a href="#" className="hover:text-teal-400">Newsletter</a></li>
+                    <li><a href="#" className="hover:text-teal-400">Media Reports</a></li>
+                    <li><a href="#" className="hover:text-teal-400">Site Reports</a></li>
+                    <li><a href="#" className="hover:text-teal-400">Interviews</a></li>
+                    <li><a href="#" className="hover:text-teal-400">Winter Section</a></li>
+                    <li><a href="#" className="hover:text-teal-400">Summer Section</a></li>
+                </ul>
+            </div>
+
+            
+            <div>
+                <h3 className="text-white text-xl font-semibold mb-4 hover:text-red-400">Contact Information</h3>
+                <p className="text-gray-400 text-sm">Email: <a href="mailto:contact@napsbitmesra.ac.in"
+                        className="hover:underline">@napsbitmesra</a></p>
+                
+            </div>
+        </div>
+
+        
+        <div className="bg-gray-800 text-center py-4 text-white-800">
+            <p className="text-sm text-white-500">&copy;News and Publication Society, BIT Mesra Ranchi, Jharkhand, India - 835215. All Rights Reserved.</p>
+            <p className="text-xs text-white-600">The views expressed in our publications are those of the authors and contributors.</p>
+        </div>
+    </footer>
     </html>
   );
 }
