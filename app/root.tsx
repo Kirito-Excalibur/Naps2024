@@ -213,9 +213,9 @@ export default function App() {
             <h3 className="text-white text-xl font-semibold mb-4 hover:text-red-400">Quick Links</h3>
             <ul className="text-gray-400 text-sm space-y-2">
                 <li><a href="#" className="hover:text-teal-400">Home</a></li>
-                <li><a href="#" className="hover:text-teal-400">Editorial</a></li>
-                <li><a href="#" className="hover:text-teal-400">Epistle</a></li>
-                <li><a href="#" className="hover:text-teal-400">Our Team</a></li>
+                <li><a href="/editorials" className="hover:text-teal-400">Editorial</a></li>
+                <li><a href="/epistle" className="hover:text-teal-400">Epistle</a></li>
+                <li><a href="teams" className="hover:text-teal-400">Our Team</a></li>
                 
             </ul>
         </div>
