@@ -43,7 +43,7 @@ export default function App() {
         <meta property="og:image:height" content="300" />
         <meta property="og:image:width" content="400" />
         <meta charSet="utf-8" />
-        <meta http-equiv="Cache-Control" content="no-store" />
+        <meta httpEquiv="Cache-Control" content="no-store" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <Meta />
         <Links />
@@ -224,12 +224,12 @@ export default function App() {
         <div>
             <h3 className="text-white text-xl font-semibold mb-4 hover:text-red-400">Publications & Resources</h3>
             <ul className="text-gray-400 text-sm space-y-2">
-                <li><a href="#" className="hover:text-teal-400">Newsletter</a></li>
-                <li><a href="#" className="hover:text-teal-400">Media Reports</a></li>
-                <li><a href="#" className="hover:text-teal-400">Site Reports</a></li>
-                <li><a href="#" className="hover:text-teal-400">Interviews</a></li>
-                <li><a href="#" className="hover:text-teal-400">Winter Section</a></li>
-                <li><a href="#" className="hover:text-teal-400">Summer Section</a></li>
+                <li><a href="/newsletter" className="hover:text-teal-400">Newsletter</a></li>
+                <li><a href="/media_reports" className="hover:text-teal-400">Media Reports</a></li>
+                <li><a href="/site_reports" className="hover:text-teal-400">Site Reports</a></li>
+                <li><a href="/interviews" className="hover:text-teal-400">Interviews</a></li>
+                <li><a href="/winter_section" className="hover:text-teal-400">Winter Section</a></li>
+                <li><a href="summer_section" className="hover:text-teal-400">Summer Section</a></li>
             </ul>
         </div>
 
