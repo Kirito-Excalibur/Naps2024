@@ -118,6 +118,8 @@ export default function App() {
           >
             Editorials
           </NavLink>
+
+          
           <NavLink
             className={({ isActive }) =>
               isActive
@@ -140,6 +142,7 @@ export default function App() {
           >
             Our Team
           </NavLink>
+
 
           {user ? (
             <>
@@ -205,17 +208,18 @@ export default function App() {
             <p className="text-gray-400 text-sm mb-4">
                  Insightful editorials, and a platform for young voices.
             </p>
-            <a href="#" className="text-teal-400 hover:underline text-sm">Learn More About Us</a>
+            <a href="/" className="text-teal-400 hover:underline text-sm">Learn More About Us</a>
         </div>
 
         
         <div>
             <h3 className="text-white text-xl font-semibold mb-4 hover:text-red-400">Quick Links</h3>
             <ul className="text-gray-400 text-sm space-y-2">
-                <li><a href="#" className="hover:text-teal-400">Home</a></li>
+                <li><a href="/" className="hover:text-teal-400">Home</a></li>
                 <li><a href="/editorials" className="hover:text-teal-400">Editorial</a></li>
                 <li><a href="/epistle" className="hover:text-teal-400">Epistle</a></li>
-                <li><a href="teams" className="hover:text-teal-400">Our Team</a></li>
+                <li><a href="/teams" className="hover:text-teal-400">Our Team</a></li>
+               
                 
             </ul>
         </div>
@@ -236,8 +240,8 @@ export default function App() {
         
         <div>
             <h3 className="text-white text-xl font-semibold mb-4 hover:text-red-400">Contact Information</h3>
-            <p className="text-gray-400 text-sm">Email: <a href="mailto:contact@napsbitmesra.ac.in"
-                    className="hover:underline">@napsbitmesra</a></p>
+            <p className="text-gray-400 text-sm">Email: <a href="mailto:@napsbitmesra.ac.in"
+                    className="hover:underline">naps@bitmesra</a></p>
             
         </div>
     </div>

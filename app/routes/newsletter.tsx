@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
 const newsletters = [
-  { title: "January 2024 Edition", date: "Jan 10, 2024", pdf: "/pdfs/jan2024.pdf" },
-  { title: "December 2023 Edition", date: "Dec 15, 2023", pdf: "/pdfs/dec2023.pdf" },
-  { title: "November 2023 Edition", date: "Nov 20, 2023", pdf: "/pdfs/nov2023.pdf" },
+  { title: "January 2025 Edition", date: "Jan 10, 2024", pdf: "/pdf/bit by bit_2025.pdf" },
+  { title: "December 2024 Edition", date: "Dec 15, 2023", pdf: "/pdfs/dec2023.pdf" },
+  { title: "November 2024 Edition", date: "Nov 20, 2023", pdf: "/pdfs/nov2023.pdf" },
 ];
 
 export default function Newsletter() {
