@@ -49,6 +49,8 @@ export default function App() {
         <Links />
       </head>
       <body className="h-full">
+      <div className="min-h-screen flex flex-col">
+        
         {/* Loading Indicator at the Top */}
         {isLoading && (
           <div className="fixed top-0 left-0 w-full h-1 bg-blue-500">
@@ -176,7 +178,9 @@ export default function App() {
             </>
           )}
         </nav>
-        <Outlet />
+        <main className="flex-grow">
+      <Outlet />
+    </main>
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
@@ -252,6 +256,7 @@ export default function App() {
         <p className="text-xs text-white-600">The views expressed in our publications are those of the authors and contributors.</p>
     </div>
 </footer>
+</div>
       </body>
 
     </html>
