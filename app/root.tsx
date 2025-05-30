@@ -44,12 +44,12 @@ export default function App() {
         <meta property="og:image:width" content="400" />
         <meta charSet="utf-8" />
         <meta httpEquiv="Cache-Control" content="no-store" />
-        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <meta name="viewport" content="width=1920,initial-scale=1" />
         <Meta />
         <Links />
       </head>
-      <body className="h-full">
-      <div className="min-h-screen flex flex-col">
+      <body className=" w-[2560px] border-blue-600 border-8">
+      <div className="min-h-screen flex-grow flex flex-col">
         
         {/* Loading Indicator at the Top */}
         {isLoading && (
@@ -185,10 +185,13 @@ export default function App() {
         <Scripts />
         <LiveReload />
         
+
+</div>
+      </body>
       <footer className="bg-gray-900 text-gray-300">
         
                 
-        <div className="flex justify-center space-x-4 mt-6" >
+        <div className="flex justify-center space-x-4 " >
             <a href="#" aria-label="Facebook" className="hover:scale-110 transition mt-6 ">
             <i className="ri-facebook-circle-fill ri-2x"></i>
             </a>
@@ -256,9 +259,6 @@ export default function App() {
         <p className="text-xs text-white-600">The views expressed in our publications are those of the authors and contributors.</p>
     </div>
 </footer>
-</div>
-      </body>
-
     </html>
   );
 }
