@@ -35,7 +35,7 @@ export default function App() {
     setMenuOpen((prev) => !prev); // Toggle the menu
   };
   return (
-    <html lang="en" className="h-full">
+    <html lang="en" className="h-full flex flex-col items-center">
       <head>
         <meta property="og:title" content="News and Publication Society"/>
         <meta property="og:description" content="A dynamic administrative body dedicated to capturing and disseminating the vibrant news and media happenings across the campus of BIT Mesra"/>
@@ -48,8 +48,8 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body className=" w-[2560px] border-blue-600 border-8">
-      <div className="min-h-screen flex-grow flex flex-col">
+      <body className=" w-full ">
+      <div className="min-h-screen flex-grow flex flex-col items-center">
         
         {/* Loading Indicator at the Top */}
         {isLoading && (
@@ -57,8 +57,8 @@ export default function App() {
             <div className="h-full bg-blue-700 animate-pulse"></div>
           </div>
         )}
-        <header className="bg-[rgb(177,4,14)] p-4 text-white">
-          <div className="flex justify-between  items-center">
+        <header className="bg-[rgb(177,4,14)] p-4 text-white w-full ">
+          <div className="flex justify-between w-full items-center ">
             <h1 className="text-3xl sm:text-5xl hidden sm:block">
               News And Publication Society
             </h1>
@@ -95,7 +95,7 @@ export default function App() {
         <nav
           className={`${
             menuOpen ? "block" : "hidden"
-          } sm:flex flex box-border   px-4 shadow-lg py-4 sm:shadow-lg flex-col sm:flex-row sm:justify-center gap-4 mt-4 sm:mt-0 sm:items-center`}
+          } sm:flex flex box-border   px-4 shadow-lg py-4 sm:shadow-lg flex-col sm:flex-row sm:justify-center gap-4 mt-4 sm:mt-0 sm:items-center w-full`}
         >
           <NavLink
             className={({ isActive }) =>
@@ -178,7 +178,7 @@ export default function App() {
             </>
           )}
         </nav>
-        <main className="flex-grow">
+        <main className="flex-grow  max-w-[1920px]">
       <Outlet />
     </main>
         <ScrollRestoration />
@@ -188,7 +188,7 @@ export default function App() {
 
 </div>
       </body>
-      <footer className="bg-gray-900 text-gray-300">
+      <footer className="bg-gray-900 text-gray-300 w-full">
         
                 
         <div className="flex justify-center space-x-4 " >
