@@ -29,7 +29,7 @@ export default function Index() {
   to={`editorials/${data.noteListItems[0].id}`}
   className="col-span-1 sm:col-span-2 border border-black p-5 rounded-lg shadow-lg flex flex-col items-center justify-center"
 >
-  <div className="border-8 border-blue-300">
+  <div >
   <img src={data.noteListItems[0].thumbnail || "/images/thumb.jpeg"} alt="Thumbnail Here" className="mb-4" />
   <h2 className="font-bold text-xl mb-2">
     {data.noteListItems[0].title}
