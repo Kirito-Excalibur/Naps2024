@@ -181,14 +181,17 @@ export default function App() {
               </>
             )}
           </nav>
-          <main className="flex-grow  max-w-[1920px]">
+          <main className="flex-grow max-w-[1920px]">
             <Outlet />
           </main>
           <ScrollRestoration />
           <Scripts />
           <LiveReload />
        
-          <footer className="bg-gray-900 text-gray-300 w-full">
+       
+        </div>
+      </body>
+      <footer className="bg-gray-900 text-gray-300 w-full">
         <div className="flex justify-center space-x-4 ">
           <a
             href="#"
@@ -323,9 +326,6 @@ export default function App() {
           </p>
         </div>
       </footer>
-        </div>
-      </body>
-    
     </html>
   );
 }

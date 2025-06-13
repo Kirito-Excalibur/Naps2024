@@ -30,15 +30,17 @@ export function getNoteListItems({ userId }: { userId: User["id"] }) {
 export function createNote({
   body,
   title,
+  author,
   userId,
   thumbnail,
-}: Pick<Note, "body" | "title" | "thumbnail"> & {
+}: Pick<Note, "body" | "title" | "thumbnail"|"author"> & {
   userId: User["id"];
 }) {
   return prisma.note.create({
     data: {
       title,
       body,
+      author,
       thumbnail,
       user: {
         connect: {

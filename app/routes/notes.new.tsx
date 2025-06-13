@@ -11,6 +11,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
 
   const formData = await request.formData();
   const title = formData.get("title");
+  const author=formData.get("author")
   const body = formData.get("body");
   const thumbnail = formData.get("thumbnail");
   
@@ -21,6 +22,14 @@ export const action = async ({ request }: ActionFunctionArgs) => {
       { status: 400 },
     );
   }
+  
+  // if (typeof author !== "string" || author.length === 0) {
+  //   return json(
+  //     { errors: { body: null, author: "Author is required" } },
+  //     { status: 400 },
+  //   );
+  // }
+
 
   if (typeof body !== "string" || body.length === 0 || body === "<p><br></p>") {
     return json(
@@ -42,6 +51,25 @@ export const action = async ({ request }: ActionFunctionArgs) => {
     );
   }
 
+  if (
+    typeof author !== "string" ||
+    author.length === 0 ||
+    author === "<p><br></p>"
+  ) {
+    return json(
+      {
+        errors: {
+          author: "Author is required",
+          title: null,
+          body: null,
+          thumbnail: null,
+        },
+      },
+      { status: 400 },
+    );
+  }
+
+
   // // Handle image upload (assuming you're storing it in a folder)
   // let thumbnailUrl = null;
   // if (thumbnail && typeof thumbnail === "object") {
@@ -57,6 +85,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   const note = await createNote({
     body,
     title,
+    author,
     userId,
     thumbnail, // Save the thumbnail URL or path in the database
   });
@@ -67,7 +96,10 @@ export const action = async ({ request }: ActionFunctionArgs) => {
 export default function NewNotePage() {
   const actionData = useActionData<typeof action>();
   const titleRef = useRef<HTMLInputElement>(null);
-  const [imageURL, setImageURL] = useState(null); // State to hold the uploaded image URL
+
+  const authorRef = useRef<HTMLInputElement>(null);
+  
+  const [imageURL, setImageURL] = useState(null); // St ate to hold the uploaded image URL
   const [imageFile, setImageFile] = useState<File | null>(null); // Allow null or File
   const navigation = useNavigation();
   const isLoading = navigation.state === "submitting";
@@ -149,7 +181,6 @@ export default function NewNotePage() {
         style={{
           display: "flex",
           flexDirection: "column",
-
           width: "100%",
         }}
       >
@@ -174,6 +205,26 @@ export default function NewNotePage() {
               aria-invalid={actionData?.errors?.title ? true : undefined}
               aria-errormessage={
                 actionData?.errors?.title ? "title-error" : undefined
+              }
+            />
+          </label>
+          {actionData?.errors?.title ? (
+            <div className="pt-1 text-red-700" id="title-error">
+              {actionData.errors.title}
+            </div>
+          ) : null}
+        </div>
+
+        <div>
+          <label className="flex w-full flex-col gap-1">
+            <span>Author: </span>
+            <input
+              ref={authorRef}
+              name="author"
+              className="flex-1 rounded-md border-2 focus:border-blue-500 px-3 text-lg leading-loose"
+              aria-invalid={actionData?.errors?.body ? true : undefined}
+              aria-errormessage={
+                actionData?.errors?.body ? "title-error" : undefined
               }
             />
           </label>
