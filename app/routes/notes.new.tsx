@@ -182,6 +182,9 @@ export default function NewNotePage() {
           display: "flex",
           flexDirection: "column",
           width: "100%",
+          maxWidth: "800px", // Limit the form width for larger screens
+          margin: "0 auto", // Center the form
+          padding: "1rem", // Add padding for better spacing
         }}
       >
         <div>
@@ -238,7 +241,7 @@ export default function NewNotePage() {
         <div className="h-[500px]">
           <div className="flex w-full flex-col gap-1">
             <span>Body: </span>
-            <div className="w-full  flex-1 rounded-md  px-3 py-2 text-lg leading-6">
+            <div className="w-full flex-1 rounded-md px-3 py-2 text-lg leading-6">
               <Editor ref={quillRef} />
             </div>
           </div>
@@ -258,6 +261,38 @@ export default function NewNotePage() {
           </button>
         </div>
       </form>
+
+      <style>{`
+        @media (max-width: 768px) {
+          form {
+            padding: 0.5rem;
+          }
+
+          input,
+          button {
+            font-size: 1rem;
+          }
+
+          .h-[500px] {
+            height: 300px; // Adjust editor height for smaller screens
+          }
+        }
+
+        @media (max-width: 480px) {
+          form {
+            padding: 0.25rem;
+          }
+
+          input,
+          button {
+            font-size: 0.875rem;
+          }
+
+          .h-[500px] {
+            height: 200px; // Further adjust editor height for very small screens
+          }
+        }
+      `}</style>
     </>
   );
 }

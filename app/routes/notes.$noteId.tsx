@@ -34,26 +34,106 @@ export const action = async ({ params, request }: ActionFunctionArgs) => {
 export default function NoteDetailsPage() {
   const data = useLoaderData<typeof loader>();
 
-  const displayImage= data.note.thumbnail || ""
+  const displayImage = data.note.thumbnail || "";
   return (
-    <div>
-      <img width={"250px"} src={displayImage} alt="" />
-      <h3 className="text-2xl font-bold">{data.note.title}</h3>
-      <p className="py-6"
-        
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        padding: "1rem",
+        maxWidth: "800px",
+        margin: "0 auto",
+      }}
+    >
+      <img
+        width={"250px"}
+        src={displayImage}
+        alt=""
+        style={{
+          maxWidth: "100%",
+          height: "auto",
+          marginBottom: "1rem",
+        }}
+      />
+      <h3
+        className="text-2xl font-bold"
+        style={{
+          textAlign: "center",
+          marginBottom: "1rem",
+        }}
+      >
+        {data.note.title}
+      </h3>
+      <p
+        className="py-6"
         dangerouslySetInnerHTML={{ __html: data.note.body }}
-        style={{ whiteSpace: 'pre-wrap' }}
-        
-        />
-      <hr className="my-4" />
-      <Form method="post">
+        style={{
+          whiteSpace: "pre-wrap",
+          textAlign: "justify",
+          marginBottom: "1rem",
+        }}
+      />
+      <hr className="my-4" style={{ width: "100%", marginBottom: "1rem" }} />
+      <Form method="post" style={{ width: "100%", textAlign: "center" }}>
         <button
           type="submit"
           className="rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 focus:bg-blue-400"
+          style={{
+            width: "100%",
+            maxWidth: "200px",
+            margin: "0 auto",
+          }}
         >
           Delete
         </button>
       </Form>
+
+      <style>{`
+        @media (max-width: 768px) {
+          div {
+            padding: 0.5rem;
+          }
+
+          img {
+            width: 200px;
+          }
+
+          h3 {
+            font-size: 1.5rem;
+          }
+
+          p {
+            font-size: 1rem;
+          }
+
+          button {
+            font-size: 1rem;
+          }
+        }
+
+        @media (max-width: 480px) {
+          div {
+            padding: 0.25rem;
+          }
+
+          img {
+            width: 150px;
+          }
+
+          h3 {
+            font-size: 1.25rem;
+          }
+
+          p {
+            font-size: 0.875rem;
+          }
+
+          button {
+            font-size: 0.875rem;
+          }
+        }
+      `}</style>
     </div>
   );
 }

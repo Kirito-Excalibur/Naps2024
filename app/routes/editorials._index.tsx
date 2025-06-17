@@ -26,7 +26,7 @@ function editorials_indexPage() {
     src={note.thumbnail || "/images/thumb.jpeg"}
     alt="Thumbnail Here"
   /> <h2 className="font-bold text-lg mb-2">{note.title}</h2>
-            <p className="text-sm text-gray-500">{note.user.name}</p>
+            <p className="text-sm text-gray-500">{note.author}</p>
           </NavLink>
         ))}
       </div>

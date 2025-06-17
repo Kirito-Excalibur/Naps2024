@@ -43,7 +43,7 @@ export default function NoteDetailsPage() {
 
       <h3 className="font-tinos">
         
-        Author name:- {data.note.user.name}
+        Author name:- {data.note.author}
       </h3>
       <p
         className="font-tinos py-6 flex justify-center break-word align-center items-center flex-col text-base md:text-lg"
