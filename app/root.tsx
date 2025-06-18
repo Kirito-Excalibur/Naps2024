@@ -10,16 +10,31 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
-import { Link, Form, NavLink, useNavigation } from "@remix-run/react";
+import { Form, Link, NavLink, useLoaderData, useNavigation } from "@remix-run/react";
 import { getUser } from "~/session.server";
 import stylesheet from "~/tailwind.css";
 import { useOptionalUser } from "./utils";
 import { useState } from "react";
+import { getAllNotes } from "~/models/note.server";
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: stylesheet },
   ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
+  ...additionalLinks(),
 ];
+
+export function additionalLinks() {
+  return [
+    {
+      rel: "stylesheet",
+      href: "https://fonts.googleapis.com/css2?family=Newsreader:wght@400;700&display=swap",
+    },
+    {
+      rel: "stylesheet",
+      href: "https://fonts.googleapis.com/css2?family=Newsreader:wght@400;700&family=Cinzel:wght@400;700&display=swap",
+    }
+  ];
+}
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   return json({ user: await getUser(request) });
@@ -34,6 +49,8 @@ export default function App() {
   const toggleMenu = () => {
     setMenuOpen((prev) => !prev); // Toggle the menu
   };
+  const data = useLoaderData<typeof loader>();
+
   return (
     <html lang="en" className="h-full flex flex-col items-center">
       <head>
@@ -100,7 +117,7 @@ export default function App() {
           <nav
             className={`${
               menuOpen ? "block" : "hidden"
-            } sm:flex flex box-border   px-4 shadow-lg py-4 sm:shadow-lg flex-col sm:flex-row sm:justify-center gap-4 mt-4 sm:mt-0 sm:items-center w-full`}
+            } sm:flex flex box-border font-cinzel font-bold  px-4 shadow-lg py-4 sm:shadow-lg flex-col sm:flex-row sm:justify-center gap-4 mt-4 sm:mt-0 sm:items-center w-full`}
           >
             <NavLink
               className={({ isActive }) =>
@@ -146,7 +163,7 @@ export default function App() {
               to="/teams"
               onClick={toggleMenu}
             >
-              Our Team
+              Team
             </NavLink>
 
             {user ? (
@@ -180,6 +197,22 @@ export default function App() {
               </Link> */}
               </>
             )}
+
+<Form method="get" action="/" className="flex">
+                <input
+                  type="text"
+                  name="search"
+                  placeholder="Search posts..."
+                  className="px-4 py-2 rounded-l-md border border-gray-300 text-black"
+                />
+                <button
+                  type="submit"
+                  className="px-4 py-2 bg-blue-500 text-white rounded-r-md hover:bg-blue-600"
+                >
+                  Search
+                </button>
+              </Form>
+
           </nav>
           <main className="flex-grow max-w-[1920px]">
             <Outlet />
@@ -187,8 +220,6 @@ export default function App() {
           <ScrollRestoration />
           <Scripts />
           <LiveReload />
-       
-       
         </div>
       </body>
       <footer className="bg-gray-900 text-gray-300 w-full">

@@ -60,18 +60,26 @@ export function deleteNote({
   });
 }
 
-export function getAllNotes() {
+export function getAllNotes(searchQuery?: string) {
   return prisma.note.findMany({
+    where: searchQuery
+      ? {
+          title: {
+            contains: searchQuery, // Search for titles containing the query
+            mode: "insensitive", // Case-insensitive search
+          },
+        }
+      : undefined, // If no search query, return all notes
     select: {
       id: true,
       title: true,
       userId: true,
-      thumbnail:true,
-      author:true,
+      thumbnail: true,
+      author: true,
       user: {
         select: {
-          name:true,
-          email: true, // Fetch the email of the user
+          name: true,
+          email: true,
         },
       },
     },

@@ -1,14 +1,17 @@
-import type { MetaFunction } from "@remix-run/node";
-import { Link } from "@remix-run/react";
+import type { MetaFunction, LoaderFunctionArgs } from "@remix-run/node"; // Use LoaderFunctionArgs
+import { Link, Form } from "@remix-run/react";
 import Editor from "~/Components/Editor";
 import { useRef } from "react";
 import { useOptionalUser } from "~/utils";
 import { Outlet, useLoaderData, NavLink } from "@remix-run/react";
-import { json } from "@remix-run/react";
+import { json } from "@remix-run/node";
 
 import { getAllNotes } from "~/models/note.server";
-export const loader = async () => {
-  const noteListItems = await getAllNotes();
+
+export const loader = async ({ request }: LoaderFunctionArgs) => { // Use LoaderFunctionArgs here
+  const url = new URL(request.url);
+  const searchQuery = url.searchParams.get("search") || ""; // Get the search query from the URL
+  const noteListItems = await getAllNotes(searchQuery);
   return json({ noteListItems });
 };
 
@@ -20,8 +23,26 @@ export default function Index() {
   const quillRef = useRef<any>();
   return (
     <>
-      {/* <h1 className="text-2xl text-center my-4">Editorials</h1> */}
+      {/* Navbar with Search */}
+      {/* <nav className="flex justify-between items-center p-4 bg-gray-800 text-white">
+        <h1 className="text-xl font-bold">News And Publication Society</h1>
+        <Form method="get" action="/" className="flex">
+          <input
+            type="text"
+            name="search"
+            placeholder="Search posts..."
+            className="px-4 py-2 rounded-l-md border border-gray-300 text-black" // Added text-black
+          />
+          <button
+            type="submit"
+            className="px-4 py-2 bg-blue-500 text-white rounded-r-md hover:bg-blue-600"
+          >
+            Search
+          </button>
+        </Form>
+      </nav> */}
 
+      {/* Posts */}
       <div className="p-6 grid gap-8">
         {/* First larger post on the left */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">

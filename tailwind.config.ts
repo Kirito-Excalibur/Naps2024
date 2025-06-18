@@ -6,6 +6,8 @@ export default {
     extend: {},
     fontFamily:{
       tinos:[ "Tinos", "serif"],
+      newsreader: ["Newsreader", "serif"],
+      cinzel: ["Cinzel", "serif"],
     }
 
   },

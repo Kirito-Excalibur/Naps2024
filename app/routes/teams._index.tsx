@@ -26,7 +26,7 @@ function teams() {
 
   return (
     <>
-      <h1 className="text-2xl text-center my-4">Our Team</h1>
+      <h1 className="text-2xl text-center my-4 font-cinzel">Our Team</h1>
 
       <div className="text-end mx-6">
         <Link to="/teams/legends">

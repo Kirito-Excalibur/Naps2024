@@ -23,7 +23,7 @@ function legends() {
 
   return (
     <>
-      <h1 className="text-2xl text-center my-4">Legends Of The Past</h1>
+      <h1 className="text-2xl text-center my-4 font-cinzel">Legends Of The Past</h1>
 
       <div className="text-end mx-6">
         <Link to="/teams">
