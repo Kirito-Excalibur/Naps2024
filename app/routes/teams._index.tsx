@@ -2,26 +2,45 @@ import React from "react";
 import "../button.css";
 import { Link } from "@remix-run/react";
 
-function teams() {
+function Teams() {
   const team = [
-    { name: "Harshit Sagar", position: "General Secretary" },
-    { name: "Gauri Malviya", position: "Joint Secretary" },
-    { name: "Kumari Richa", position: "Joint Secretary" },
-    { name: "Priyanshu Kumar", position: "Treasurer" },
-    { name: "Aadrita Goswami", position: "Co-Treasurer" },
-    { name: "Vanshika Raj Singh", position: "Co-Treasurer" },
-    { name: "Priyanshu Priyam", position: "Deputy Editor" },
-    { name: "Akash Tiwari", position: "Deputy Editor" },
-    { name: "Aaditya Sinha", position: "Documentation Coordinator" },
-    { name: "Yogesh Kumar", position: "Media Coordinator" },
-    { name: "Anish Kishore", position: "Epistle Coordinator" },
-    { name: "Khushii Mathur", position: "Interview's Coordinator" },
-    { name: "Erapani Meenal", position: "Event's Coordinator" },
-    { name: "Anushka Maiti", position: "Event's Coordinator" },
-    { name: "Piyush Meena", position: "Content and Social Media Coordinator" },
-    { name: "Nikhil Simon Toppo", position: "Technical Coordinator" },
-    { name: "Md. Raja Istekhar", position: "Executive Member" },
-    { name: "Dishaan D", position: "Executive Member" },
+    { name: "Harshit Sagar", position: "President" },
+    { name: "Kumari Richa", position: "Joint President" },
+    { name: "Nikhil Simon Toppo", position: "Vice President" },
+    { name: "Gauri Malviya", position: "Vice President" },
+    { name: "Aadrita Goswami", position: "Editor-in-Chief" },
+    { name: "Priyanshu Kumar", position: "Editor-in-Chief" },
+    { name: "Anish Kishore", position: "Epistle Head" },
+    { name: "Vanshika Raj Singh", position: "Media Head" },
+    { name: "Yogesh Kumar", position: "Interviews' Head" },
+    { name: "Dishaan Dilip", position: "Events Head" },
+    { name: "Erapani Meenal", position: "Senior Executive Member" },
+    { name: "Sumit Kumar", position: "General Secretary" },
+    { name: "Nidhi Devi", position: "General Secretary" },
+    { name: "Alisha Mariyam Hussain", position: "Joint Secretary" },
+    { name: "Garima Sablok", position: "Treasurer" },
+    { name: "Yash Shekhar", position: "Co-Treasurer" },
+    { name: "Aditya Kumar", position: "Co-Treasurer" },
+    { name: "Erina Firdos", position: "Deputy Editor" },
+    { name: "Kumar Shubham", position: "Deputy Editor" },
+    { name: "Kartikey Singh", position: "Documentation Coordinator" },
+    { name: "Adrija Thakur", position: "Media Coordinator" },
+    { name: "Md. Iftekhar", position: "Epistle Coordinator" },
+    { name: "Aditi Prabha", position: "Design Coordinator" },
+    { name: "Shruti Kumari", position: "Design Coordinator" },
+    { name: "Arman Hansda", position: "Video Lead" },
+    { name: "Apoorva Prakash", position: "Interviews' Coordinator" },
+    { name: "Aryan Raj", position: "Interviews' Coordinator" },
+    { name: "Arundhuti Mukherjee", position: "Events' Coordinator" },
+    { name: "Ritiraj", position: "Social Media Coordinator" },
+    { name: "Md. Affan", position: "Technical Coordinator" },
+    // { name: "Pranit Pranav", position: "Technical Coordinator" },
+    { name: "Jatin Jagathkar", position: "Executive Member" },
+    { name: "Rishi Bansal", position: "Executive Member" },
+    // { name: "Geet Natu", position: "Executive Member" },
+    { name: "Arnav Kumar", position: "Executive Member" },
+    { name: "Riya Kumari", position: "Executive Member" },
+    { name: "Yash Jha", position: "Executive Member" },
   ];
 
   return (
@@ -31,11 +50,7 @@ function teams() {
       <div className="text-end mx-6">
         <Link to="/teams/legends">
           <button className="button">
-            <div>
-              <div>
-                <div>Legends Of The Past</div>
-              </div>
-            </div>
+            <div>Legends Of The Past</div>
           </button>
         </Link>
       </div>
@@ -44,21 +59,15 @@ function teams() {
         {team.map((member, index) => (
           <div
             key={index}
-            className="items-center border-black p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow"
+            className="items-center border-black p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow text-center"
           >
             <img
               src={`/images/Team/${member.name}.jpg`}
               className="w-[300px] h-[400px] object-cover"
-              alt="Thumbnail Here"
+              alt={`${member.name}`}
             />
-            <h2 className="font-bold text-lg mb-2">{member.name}</h2>
-            {member.position ? (
-              <p className="text-sm text-gray-500">
-                {member.position}
-              </p>
-            ) : (
-              <p className="text-sm text-gray-500">{member.position}</p>
-            )}
+            <h2 className="font-bold text-lg my-2">{member.name}</h2>
+            <p className="text-sm text-gray-500">{member.position}</p>
           </div>
         ))}
       </div>
@@ -66,4 +75,4 @@ function teams() {
   );
 }
 
-export default teams;
+export default Teams;
