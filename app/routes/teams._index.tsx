@@ -47,13 +47,18 @@ function Teams() {
     <>
       <h1 className="text-2xl text-center my-4 font-cinzel">Our Team</h1>
 
-      <div className="text-end mx-6">
-        <Link to="/teams/legends">
-          <button className="button">
-            <div>Legends Of The Past</div>
-          </button>
-        </Link>
-      </div>
+      
+        <div className="text-end mx-6">
+               <Link to="/teams/legends">
+                <button className="button">
+                  <div>
+                    <div>
+                      <div>Legends Of The Past</div>
+                    </div>
+                  </div>
+                </button>
+              </Link>
+            </div>
 
       <div className="grid justify-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-14">
         {team.map((member, index) => (
