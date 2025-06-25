@@ -37,7 +37,7 @@ function Teams() {
     // { name: "Pranit Pranav", position: "Technical Coordinator" },
     { name: "Jatin Jagathkar", position: "Executive Member" },
     { name: "Rishi Bansal", position: "Executive Member" },
-    // { name: "Geet Natu", position: "Executive Member" },
+     { name: "GeetNatu", position: "Executive Member" },
     { name: "Arnav Kumar", position: "Executive Member" },
     { name: "Riya Kumari", position: "Executive Member" },
     { name: "Yash Jha", position: "Executive Member" },
