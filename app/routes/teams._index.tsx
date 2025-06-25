@@ -30,7 +30,7 @@ function Teams() {
     { name: "Shruti Kumari", position: "Design Coordinator" },
     { name: "Arman Hansda", position: "Video Lead" },
     { name: "Apoorva Prakash", position: "Interviews' Coordinator" },
-    { name: "Aryan Raj", position: "Interviews' Coordinator" },
+    { name: "AryanRaj", position: "Interviews' Coordinator" },
     { name: "Arundhuti Mukherjee", position: "Events' Coordinator" },
     { name: "Ritiraj", position: "Social Media Coordinator" },
     { name: "Md. Affan", position: "Technical Coordinator" },
