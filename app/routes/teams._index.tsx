@@ -34,7 +34,7 @@ function Teams() {
     { name: "Arundhuti Mukherjee", position: "Events' Coordinator" },
     { name: "Ritiraj", position: "Social Media Coordinator" },
     { name: "Md. Affan", position: "Technical Coordinator" },
-    // { name: "Pranit Pranav", position: "Technical Coordinator" },
+     { name: "Pranit Pranav", position: "Technical Coordinator" },
     { name: "Jatin Jagathkar", position: "Executive Member" },
     { name: "Rishi Bansal", position: "Executive Member" },
      { name: "GeetNatu", position: "Executive Member" },
