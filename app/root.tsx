@@ -15,6 +15,7 @@ import { getUser } from "~/session.server";
 import stylesheet from "~/tailwind.css";
 import { useOptionalUser } from "./utils";
 import { useState } from "react";
+import React from "react";
 import { getAllNotes } from "~/models/note.server";
 
 export const links: LinksFunction = () => [
@@ -45,14 +46,41 @@ export default function App() {
   const navigation = useNavigation();
   const isLoading = navigation.state === "loading";
   const [menuOpen, setMenuOpen] = useState(false); // State to control menu visibility
+  const [darkMode, setDarkMode] = useState(() => {
+    if (typeof window !== "undefined") {
+      return localStorage.getItem("theme") === "dark";
+    }
+    return false;
+  });
 
+  // Toggle menu
   const toggleMenu = () => {
-    setMenuOpen((prev) => !prev); // Toggle the menu
+    setMenuOpen((prev) => !prev);
   };
+  // Toggle dark mode
+  const toggleDarkMode = () => {
+    setDarkMode((prev) => {
+      const newMode = !prev;
+      if (typeof window !== "undefined") {
+        localStorage.setItem("theme", newMode ? "dark" : "light");
+        document.documentElement.classList.toggle("dark", newMode);
+      }
+      return newMode;
+    });
+  };
+
+  // Sync dark mode on mount
+  React.useEffect(() => {
+    if (typeof window !== "undefined") {
+      const isDark = localStorage.getItem("theme") === "dark";
+      document.documentElement.classList.toggle("dark", isDark);
+    }
+  }, []);
+
   const data = useLoaderData<typeof loader>();
 
   return (
-    <html lang="en" className="h-full flex flex-col items-center">
+    <html lang="en" className={`h-full flex flex-col items-center${darkMode ? " dark" : ""}`}>
       <head>
         <meta property="og:title" content="News and Publication Society" />
         <meta
@@ -71,17 +99,17 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body className=" w-full ">
+      <body className="w-full bg-bg text-fg">
         <div className="min-h-screen flex-grow flex flex-col items-center">
           {/* Loading Indicator at the Top */}
           {isLoading && (
-            <div className="fixed top-0 left-0 w-full h-1 bg-blue-500">
-              <div className="h-full bg-blue-700 animate-pulse"></div>
+            <div className="fixed top-0 left-0 w-full h-1 bg-accent">
+              <div className="h-full bg-accent/80 animate-pulse"></div>
             </div>
           )}
-          <header className="bg-[rgb(177,4,14)] p-4 text-white w-full ">
+          <header className="bg-primary text-primary-foreground p-4 w-full">
             <div className="flex justify-between w-full items-center ">
-              <h1 className="text-3xl sm:text-5xl hidden sm:block">
+              <h1 className="text-mainText text-3xl sm:text-5xl hidden sm:block">
                 News And Publication Society
               </h1>
               <img
@@ -92,7 +120,7 @@ export default function App() {
 
               {/* Hamburger Icon - visible on small screens */}
               <button
-                className="block sm:hidden text-white focus:outline-none"
+                className="block sm:hidden text-primary-foreground focus:outline-none"
                 onClick={toggleMenu}
               >
                 <svg
@@ -110,20 +138,26 @@ export default function App() {
                   ></path>
                 </svg>
               </button>
-            </div>
 
+              {/* Dark mode toggle button */}
+              {/* <button
+                className="ml-4 px-2 py-1 rounded bg-muted text-fg border border-border"
+                onClick={toggleDarkMode}
+                aria-label="Toggle dark mode"
+              >
+                {darkMode ? "🌙" : "☀️"}
+              </button> */}
+            </div>
             {/* Nav Links - shown on larger screens, toggle on mobile */}
           </header>
           <nav
-            className={`${
-              menuOpen ? "block" : "hidden"
-            } sm:flex flex box-border font-cinzel font-bold  px-4 shadow-lg py-4 sm:shadow-lg flex-col sm:flex-row sm:justify-center gap-4 mt-4 sm:mt-0 sm:items-center w-full`}
+            className={`${menuOpen ? "block" : "hidden"} sm:flex relative z-10 flex box-border font-cinzel font-bold px-4 shadow-lg py-4 sm:shadow-lg flex-col sm:flex-row sm:justify-center gap-4 mt-4 sm:mt-0 sm:items-center w-full bg-bg text-fg`}
           >
             <NavLink
               className={({ isActive }) =>
                 isActive
-                  ? "text-[rgb(177,4,14)] "
-                  : "relative border-b-2 border-white after:absolute after:left-1/2 after:bottom-0 after:w-0 after:h-[2px] after:bg-[rgb(177,4,14)] after:transition-all after:duration-500 hover:after:w-full hover:after:translate-x-[-50%]"
+                  ? "text-mainText"
+                  : "text-mainText relative border-b-2 border-transparent after:absolute after:left-1/2 after:bottom-0 after:w-0 after:h-[2px] after:bg-primary after:transition-all after:duration-500 hover:after:w-full hover:after:translate-x-[-50%]"
               }
               to="/"
               onClick={toggleMenu}
@@ -134,8 +168,8 @@ export default function App() {
             <NavLink
               className={({ isActive }) =>
                 isActive
-                  ? "text-[rgb(177,4,14)]"
-                  : "relative border-b-2 border-white after:absolute after:left-1/2 after:bottom-0 after:w-0 after:h-[2px] after:bg-[rgb(177,4,14)] after:transition-all after:duration-500 hover:after:w-full hover:after:translate-x-[-50%]"
+                  ? "text-mainText"
+                  : "text-mainText relative border-b-2 border-transparent after:absolute after:left-1/2 after:bottom-0 after:w-0 after:h-[2px] after:bg-primary after:transition-all after:duration-500 hover:after:w-full hover:after:translate-x-[-50%]"
               }
               to="/editorials"
               onClick={toggleMenu}
@@ -146,8 +180,8 @@ export default function App() {
             <NavLink
               className={({ isActive }) =>
                 isActive
-                  ? "text-[rgb(177,4,14)]"
-                  : "relative border-b-2 border-white after:absolute after:left-1/2 after:bottom-0 after:w-0 after:h-[2px] after:bg-[rgb(177,4,14)] after:transition-all after:duration-500 hover:after:w-full hover:after:translate-x-[-50%]"
+                  ? "text-mainText"
+                  : "text-mainText relative border-b-2 border-transparent after:absolute after:left-1/2 after:bottom-0 after:w-0 after:h-[2px] after:bg-primary after:transition-all after:duration-500 hover:after:w-full hover:after:translate-x-[-50%]"
               }
               to="/epistle"
               onClick={toggleMenu}
@@ -157,8 +191,8 @@ export default function App() {
             <NavLink
               className={({ isActive }) =>
                 isActive
-                  ? "text-[rgb(177,4,14)]"
-                  : "relative border-b-2 border-white after:absolute after:left-1/2 after:bottom-0 after:w-0 after:h-[2px] after:bg-[rgb(177,4,14)] after:transition-all after:duration-500 hover:after:w-full hover:after:translate-x-[-50%]"
+                  ? "text-mainText"
+                  : "text-mainText relative border-b-2 border-transparent after:absolute after:left-1/2 after:bottom-0 after:w-0 after:h-[2px] after:bg-primary after:transition-all after:duration-500 hover:after:w-full hover:after:translate-x-[-50%]"
               }
               to="/teams"
               onClick={toggleMenu}
@@ -170,7 +204,7 @@ export default function App() {
               <>
                 <NavLink
                   className={({ isActive }) =>
-                    isActive ? "text-[rgb(177,4,14)]" : "text-black"
+                    isActive ? "text-mainText" : "text-fg"
                   }
                   to="/notes"
                   onClick={toggleMenu}
@@ -180,7 +214,7 @@ export default function App() {
                 <Form action="/logout" method="post">
                   <button
                     type="submit"
-                    className="mt-2 sm:mt-0 rounded bg-gray-800 px-4 py-2 text-blue-100 hover:bg-blue-500 active:bg-blue-600"
+                    className="mt-2 sm:mt-0 rounded bg-muted px-4 py-2 text-fg hover:bg-accent hover:text-accent-foreground active:bg-accent/80 border border-border"
                     onClick={toggleMenu}
                   >
                     Logout
@@ -198,23 +232,23 @@ export default function App() {
               </>
             )}
 
-<Form method="get" action="/" className="flex">
-                <input
-                  type="text"
-                  name="search"
-                  placeholder="Search posts..."
-                  className="px-4 py-2 rounded-l-md border border-gray-300 text-black"
-                />
-                <button
-                  type="submit"
-                  className="px-4 py-2 bg-blue-500 text-white rounded-r-md hover:bg-blue-600"
-                >
-                  Search
-                </button>
-              </Form>
+            <Form method="get" action="/" className="flex">
+              <input
+                type="text"
+                name="search"
+                placeholder="Search posts..."
+                className="px-4 py-2 rounded-l-md border border-border text-fg bg-bg"
+              />
+              <button
+                type="submit"
+                className="px-4 py-2 bg-accent text-accent-foreground rounded-r-md hover:bg-accent/90"
+              >
+                Search
+              </button>
+            </Form>
 
           </nav>
-          <main className="flex-grow max-w-[1920px]">
+          <main className="flex-grow max-w-[1920px] bg-bg text-fg z-0">
             <Outlet />
           </main>
           <ScrollRestoration />
@@ -222,7 +256,7 @@ export default function App() {
           <LiveReload />
         </div>
       </body>
-      <footer className="bg-gray-900 text-gray-300 w-full">
+      <footer className="bg-footer text-footer-foreground w-full">
         <div className="flex justify-center space-x-4 ">
           <a
             href="#"
