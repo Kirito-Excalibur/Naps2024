@@ -340,7 +340,7 @@ export default function App() {
             <p className="text-gray-400 text-sm">
               Email:{" "}
               <a href="mailto:@napsbitmesra.ac.in" className="hover:underline">
-                naps@bitmesra
+                naps@bitmesra.ac.in
               </a>
             </p>
           </div>
