@@ -6,6 +6,7 @@ function epistle() {
     { name: "Epistle K22", url: "/images/Epistle 22.jpg" },
     { name: "Epistle K23", url: "/images/Epistle 23.jpg" },
     { name: "Epistle K24", url: "/images/Epistle 24.jpg" },
+     { name: "Epistle K25", url: "/images/Epistle 25.jpg" },
   ];
 
   return (
@@ -17,6 +18,7 @@ function epistle() {
               src={member.url}
            
               alt="Thumnail Here"
+              className="w-[180px] h-[190px] object-cover"
             />
             <h2 className="font-bold text-lg mb-2 text-center">{member.name}</h2>
           </div>
