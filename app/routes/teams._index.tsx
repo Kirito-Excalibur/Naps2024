@@ -3,6 +3,7 @@ import "../button.css";
 import { Link } from "@remix-run/react";
 
 function Teams() {
+  //na
   const team = [
     { name: "Harshit Sagar", position: "President" },
     { name: "Kumari Richa", position: "Joint President" },
