@@ -48,7 +48,7 @@ export default function Index() {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
         <Link
   to={`editorials/${data.noteListItems[0].id}`}
-  className="col-span-1 sm:col-span-2 border border-black p-5 rounded-lg shadow-lg flex flex-col items-center justify-center"
+  className="col-span-1 sm:col-span-2  p-5 rounded-lg shadow-lg flex flex-col items-center justify-center"
 >
   <div >
   <img src={data.noteListItems[0].thumbnail || "/images/thumb.jpeg"} alt="Thumbnail Here" className="mb-4" />
@@ -69,7 +69,7 @@ export default function Index() {
             {data.noteListItems.slice(1, 3).map((note) => (
               <Link
                 to={`editorials/${note.id}`}
-                className="border border-black p-4 rounded-lg shadow-md"
+                className="p-4 rounded-lg shadow-md"
                 key={note.id}
               >
                 <img src={note.thumbnail||"/images/thumb.jpeg"} alt="Thumbnail Here" />
@@ -87,7 +87,7 @@ export default function Index() {
           {data.noteListItems.slice(3, 6).map((note) => (
             <Link
               to={`editorials/${note.id}`}
-              className="border border-black p-4 rounded-lg shadow-md"
+              className="p-4 rounded-lg shadow-md"
               key={note.id}
             >
               <img src={note.thumbnail||"/images/thumb.jpeg"} alt="Thumbnail Here" />

@@ -17,7 +17,7 @@ function editorials_indexPage() {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
         {data.noteListItems.map((note) => (
           <NavLink to={note.id}
-            className="w-fit border border-black p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow"
+            className="w-fit p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow"
             key={note.id}
           >
              <img

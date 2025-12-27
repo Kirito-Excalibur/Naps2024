@@ -8,6 +8,7 @@ export default {
       tinos:[ "Tinos", "serif"],
       newsreader: ["Newsreader", "serif"],
       cinzel: ["Cinzel", "serif"],
+      pacifico:["Pacifico","serif"]
     }
 
   },

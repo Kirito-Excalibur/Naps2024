@@ -81,7 +81,7 @@ export default function App() {
           )}
           <header className="bg-[rgb(177,4,14)] p-4 text-white w-full ">
             <div className="flex justify-between w-full items-center ">
-              <h1 className="text-3xl sm:text-5xl hidden sm:block">
+              <h1 className="text-3xl sm:text-5xl hidden sm:block font-[pacifico]">
                 News And Publication Society
               </h1>
               <img
