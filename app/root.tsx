@@ -321,7 +321,7 @@ export default function App() {
                 </a>
               </li>
               <li>
-                <a href="/winter_section" className="hover:text-teal-400">
+                <a href="/winter" className="hover:text-teal-400">
                   Winter Section
                 </a>
               </li>

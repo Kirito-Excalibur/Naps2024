@@ -8,13 +8,14 @@ datasource db {
 }
 
 model User {
-  id        String    @id @default(cuid())
-  email     String    @unique
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  name      String?
-  notes     Note[]
-  password  Password?
+  id          String       @id @default(cuid())
+  email       String       @unique
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  name        String?
+  notes       Note[]
+  winterPosts WinterPost[]
+  password    Password?
 }
 
 model Password {
@@ -33,4 +34,15 @@ model Note {
   userId    String
   thumbnail String?
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model WinterPost {
+  id        String   @id @default(cuid())
+  title     String
+  link      String
+  imageUrl  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  userId    String?
+  user      User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
