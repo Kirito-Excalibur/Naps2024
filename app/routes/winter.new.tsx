@@ -24,13 +24,6 @@ export const action = async ({ request }: ActionFunctionArgs) => {
       { status: 400 },
     );
   }
-  const year = Number(formData.get("year"));
-const week = Number(formData.get("week"));
-
-if (!year || !week) {
-  return json({ error: "Year and Week are required" }, { status: 400 });
-}
-
 
   if (typeof link !== "string" || link.length === 0) {
     return json(
@@ -49,12 +42,12 @@ if (!year || !week) {
     );
   }
 
- await createWinterPost({
-  title,
-  link,
-  userId,
-  ...(imageUrl ? { imageUrl } : {}), 
-});
+  await createWinterPost({
+    title,
+    link,
+    userId,
+    imageUrl: typeof imageUrl === "string" ? imageUrl : undefined,
+  });
 
   return redirect(`/winter`);
 };
@@ -145,28 +138,71 @@ export default function NewWinterPost() {
     <div className="container mx-auto p-10 max-w-md">
       <h1 className="text-2xl font-bold mb-6">Add New Winter Post</h1>
 
-      {actionData?.error && (
-        <p className="text-red-600 mb-4">{actionData.error}</p>
-      )}
+      <form method="post" onSubmit={handleSubmit} className="space-y-4">
+        <div>
+          <label className="flex w-full flex-col gap-1">
+            <span>Image (optional): </span>
+            <input
+              type="file"
+              onChange={handleFileChange}
+              className="border p-2 w-full"
+              accept="image/*"
+            />
+          </label>
+        </div>
 
-      <Form method="post" encType="multipart/form-data" className="space-y-4">
-        <input
-          type="text"
-          name="title"
-          placeholder="Title"
-          className="border p-2 w-full"
-          required
-        />
-        <input
-          type="url"
-          name="link"
-          placeholder="Link"
-          className="border p-2 w-full"
-          required
-        />
-        <input type="file" name="image" accept="image/*" />
-        <button className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 w-full">
-          Create Post
+        <div>
+          <label className="flex w-full flex-col gap-1">
+            <span>Title: </span>
+            <input
+              ref={titleRef}
+              type="text"
+              name="title"
+              placeholder="Title"
+              className="border p-2 w-full"
+              required
+              aria-invalid={actionData?.errors?.title ? true : undefined}
+              aria-errormessage={
+                actionData?.errors?.title ? "title-error" : undefined
+              }
+            />
+          </label>
+          {actionData?.errors?.title ? (
+            <div className="pt-1 text-red-600" id="title-error">
+              {actionData.errors.title}
+            </div>
+          ) : null}
+        </div>
+
+        <div>
+          <label className="flex w-full flex-col gap-1">
+            <span>Link: </span>
+            <input
+              ref={linkRef}
+              type="url"
+              name="link"
+              placeholder="https://example.com"
+              className="border p-2 w-full"
+              required
+              aria-invalid={actionData?.errors?.link ? true : undefined}
+              aria-errormessage={
+                actionData?.errors?.link ? "link-error" : undefined
+              }
+            />
+          </label>
+          {actionData?.errors?.link ? (
+            <div className="pt-1 text-red-600" id="link-error">
+              {actionData.errors.link}
+            </div>
+          ) : null}
+        </div>
+
+        <button 
+          type="submit"
+          className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 w-full disabled:opacity-50"
+          disabled={isLoading}
+        >
+          {isLoading ? "Creating..." : "Create Post"}
         </button>
       </form>
     </div>
