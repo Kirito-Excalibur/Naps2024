@@ -9,7 +9,8 @@ export function getWinterPost({
   userId,
 }: Pick<WinterPost, "id"> & { userId?: User["id"] }) {
   return prisma.winterPost.findFirst({
-    select: { id: true, title: true, link: true, imageUrl: true, user: true },
+    select: { id: true, title: true,year:true,
+  week:true, link: true, imageUrl: true, user: true },
     where: {
       id,
       ...(userId && { userId }),
@@ -21,7 +22,8 @@ export function getWinterPost({
 export function getWinterPostListItems({ userId }: { userId?: User["id"] }) {
   return prisma.winterPost.findMany({
     where: userId ? { userId } : undefined,
-    select: { id: true, title: true,link: true, userId: true, imageUrl: true },
+    select: { id: true, title: true,link:true,year:true,
+  week:true, userId: true, imageUrl: true },
     orderBy: { updatedAt: "desc" },
   });
 }
@@ -32,9 +34,13 @@ export function createWinterPost({
   link,
   imageUrl, 
   userId,
+  year,
+  week,
 }: {
   title: string;
   link: string;
+   year: number;
+  week: number;
   imageUrl?: string; 
   userId: string;
 }) {
@@ -42,6 +48,8 @@ export function createWinterPost({
     data: {
       title,
       link,
+      year,
+      week,
       user: { connect: { id: userId } },
       ...(imageUrl ? { imageUrl } : { imageUrl: "" }), 
     },
@@ -54,12 +62,16 @@ export function updateWinterPost({
   id,
   title,
   link,
+  year,
+  week,
   imageUrl, 
   userId,
 }: {
   id: string;
   title: string;
   link: string;
+  year: number;
+  week: number;
   imageUrl?: string; 
   userId: string;
 }) {
@@ -67,6 +79,8 @@ export function updateWinterPost({
     where: { id, userId },
     data: {
       title,
+      year,
+      week,
       link,
       ...(imageUrl ? { imageUrl } : {}), 
     },

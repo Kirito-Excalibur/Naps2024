@@ -17,6 +17,13 @@ export const action: ActionFunction = async ({ request }) => {
   if (!title || !link) {
     return json({ error: "Title and Link are required" }, { status: 400 });
   }
+  const year = Number(formData.get("year"));
+const week = Number(formData.get("week"));
+
+if (!year || !week) {
+  return json({ error: "Year and Week are required" }, { status: 400 });
+}
+
 
   const uploadDir = path.join(process.cwd(), "public", "uploads");
   let imageUrl: string | undefined;
@@ -37,6 +44,8 @@ export const action: ActionFunction = async ({ request }) => {
  await createWinterPost({
   title,
   link,
+   year,
+  week,
   userId,
   ...(imageUrl ? { imageUrl } : {}), 
 });
@@ -61,20 +70,40 @@ export default function NewWinterPost() {
       )}
 
       <Form method="post" encType="multipart/form-data" className="space-y-4">
+      <input
+  type="text"
+  name="title"
+  placeholder="Title"
+  className="border p-2 w-full"
+  required
+/>
+
+<input
+  type="url"
+  name="link"
+  placeholder="Link"
+  className="border p-2 w-full"
+  required
+/>
+
         <input
-          type="text"
-          name="title"
-          placeholder="Title"
-          className="border p-2 w-full"
-          required
-        />
-        <input
-          type="url"
-          name="link"
-          placeholder="Link"
-          className="border p-2 w-full"
-          required
-        />
+  type="number"
+  name="year"
+  placeholder="Year (e.g. 2025)"
+  className="border p-2 w-full"
+  required
+/>
+
+<input
+  type="number"
+  name="week"
+  placeholder="Week (e.g. 1)"
+  min={1}
+  max={52}
+  className="border p-2 w-full"
+  required
+/>
+
         <input type="file" name="image" accept="image/*" />
         <button className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 w-full">
           Create Post

@@ -143,6 +143,18 @@ export default function App() {
               Editorials
             </NavLink>
 
+<NavLink
+              className={({ isActive }) =>
+                isActive
+                  ? "text-[rgb(177,4,14)]"
+                  : "relative border-b-2 border-white after:absolute after:left-1/2 after:bottom-0 after:w-0 after:h-[2px] after:bg-[rgb(177,4,14)] after:transition-all after:duration-500 hover:after:w-full hover:after:translate-x-[-50%]"
+              }
+              to="/winter"
+              onClick={toggleMenu}
+            >
+               Winter Section
+            </NavLink>
+
             <NavLink
               className={({ isActive }) =>
                 isActive

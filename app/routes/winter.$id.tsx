@@ -38,6 +38,13 @@ export const action = async ({ params, request }: ActionFunctionArgs) => {
 
   const uploadDir = path.join(process.cwd(), "public", "uploads");
   let imageUrl: string | undefined;
+  const year = Number(formData.get("year"));
+const week = Number(formData.get("week"));
+
+if (!year || !week) {
+  return json({ error: "Year and Week are required" }, { status: 400 });
+}
+
 
   if (file && typeof file.arrayBuffer === "function") {
   const arrayBuffer = await file.arrayBuffer();
@@ -52,13 +59,15 @@ export const action = async ({ params, request }: ActionFunctionArgs) => {
 }
 
 
-  const updateData: Parameters<typeof updateWinterPost>[0] = { id: params.id, title, link, userId };
-  if (imageUrl) updateData.imageUrl = imageUrl;
+  // const updateData: Parameters<typeof updateWinterPost>[0] = { id: params.id, title, link, userId };
+  // if (imageUrl) updateData.imageUrl = imageUrl;
 
  await updateWinterPost({
   id: params.id,
   title,
   link,
+  year,
+  week,
   userId,
   ...(imageUrl ? { imageUrl } : {}), 
 });
@@ -90,6 +99,24 @@ export default function WinterPostPage() {
           className="border p-2 w-full"
           required
         />
+        <input
+  type="number"
+  name="year"
+  defaultValue={post.year}
+  className="border p-2 w-full"
+  required
+/>
+
+<input
+  type="number"
+  name="week"
+  defaultValue={post.week}
+  min={1}
+  max={52}
+  className="border p-2 w-full"
+  required
+/>
+
         {post.imageUrl && (
           <img
             src={post.imageUrl}

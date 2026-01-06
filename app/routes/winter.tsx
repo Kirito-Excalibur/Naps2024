@@ -44,6 +44,9 @@ export default function WinterPage() {
       )}
 
       <h3 className="text-xl font-bold mb-2">{post.title}</h3>
+      <p className="text-sm text-gray-600 mb-2">
+  Year {post.year} • Week {post.week}
+</p>
 
       {/* Public → External Link */}
       <a
