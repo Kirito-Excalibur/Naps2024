@@ -143,7 +143,7 @@ export default function App() {
               Editorials
             </NavLink>
 
-<NavLink
+           {/* <NavLink
               className={({ isActive }) =>
                 isActive
                   ? "text-[rgb(177,4,14)]"
@@ -153,7 +153,7 @@ export default function App() {
               onClick={toggleMenu}
             >
                Winter Section
-            </NavLink>
+            </NavLink> */}
 
             <NavLink
               className={({ isActive }) =>
