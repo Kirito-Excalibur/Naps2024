@@ -10,7 +10,7 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
-import { Form, Link, NavLink, useLoaderData, useNavigation } from "@remix-run/react";
+import { Form, Link, NavLink, useLoaderData, useNavigation, useLocation } from "@remix-run/react";
 import { getUser } from "~/session.server";
 import stylesheet from "~/tailwind.css";
 import { useOptionalUser } from "./utils";
@@ -43,6 +43,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 export default function App() {
   const user = useOptionalUser();
   const navigation = useNavigation();
+  const location = useLocation();
   const isLoading = navigation.state === "loading";
   const [menuOpen, setMenuOpen] = useState(false); // State to control menu visibility
 
@@ -50,6 +51,15 @@ export default function App() {
     setMenuOpen((prev) => !prev); // Toggle the menu
   };
   const data = useLoaderData<typeof loader>();
+
+  // Determine search action based on current route
+  const getSearchAction = () => {
+    return '/';
+  };
+
+  const getSearchPlaceholder = () => {
+    return 'Search all posts...';
+  };
 
   return (
     <html lang="en" className="h-full flex flex-col items-center">
@@ -222,11 +232,11 @@ export default function App() {
               </>
             )}
 
-<Form method="get" action="/" className="flex">
+<Form method="get" action={getSearchAction()} className="flex">
                 <input
                   type="text"
                   name="search"
-                  placeholder="Search posts..."
+                  placeholder={getSearchPlaceholder()}
                   className="px-4 py-2 rounded-l-md border border-gray-300 text-black"
                 />
                 <button
