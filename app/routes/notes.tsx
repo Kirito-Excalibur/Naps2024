@@ -17,10 +17,10 @@ export default function NotesPage() {
   const user = useUser();
 
   return (
-    <div className="flex h-min  flex-col">
+    <div className="flex h-min flex-col">
     
-      <main className="flex h-full mt-[3rem] bg-white">
-        <div className="h-full w-80 border-r bg-gray-50">
+      <main className="flex h-full mt-[3rem] bg-white sm:gap-[200pt]">
+        <div className="h-full  border-r bg-gray-50">
           <Link to="new" className="block p-4 text-xl text-blue-500">
             + New Note
           </Link>
