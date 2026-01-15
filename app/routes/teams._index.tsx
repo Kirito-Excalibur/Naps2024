@@ -18,7 +18,7 @@ function Teams() {
     { name: "Erapani Meenal", position: "Senior Executive Member" },
     // { name: "Sumit Kumar", position: "General Secretary" },
     { name: "Nidhi Devi", position: "General Secretary" },
-    { name: "Alisha Mariyam Hussain", position: "Joint Secretary" },
+    // { name: "Alisha Mariyam Hussain", position: "Joint Secretary" },
     { name: "Garima Sablok", position: "Treasurer" },
     { name: "Yash Shekhar", position: "Co-Treasurer" },
     { name: "Aditya Kumar", position: "Co-Treasurer" },
