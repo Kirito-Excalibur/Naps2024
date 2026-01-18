@@ -36,104 +36,28 @@ export default function NoteDetailsPage() {
 
   const displayImage = data.note.thumbnail || "";
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        padding: "1rem",
-        maxWidth: "800px",
-        margin: "0 auto",
-      }}
-    >
+    <div className="flex flex-col items-center p-4 sm:p-6 lg:p-8 max-w-4xl mx-auto">
       <img
-        width={"250px"}
         src={displayImage}
         alt=""
-        style={{
-          maxWidth: "100%",
-          height: "auto",
-          marginBottom: "1rem",
-        }}
+        className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg h-auto mb-4 sm:mb-6 rounded-lg shadow-md"
       />
-      <h3
-        className="text-2xl font-bold"
-        style={{
-          textAlign: "center",
-          marginBottom: "1rem",
-        }}
-      >
+      <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-center mb-4 sm:mb-6 px-2">
         {data.note.title}
       </h3>
-      <p
-        className="py-6"
+      <div
+        className="w-full text-justify mb-6 sm:mb-8 px-2 sm:px-4 text-sm sm:text-base lg:text-lg leading-relaxed"
         dangerouslySetInnerHTML={{ __html: data.note.body }}
-        style={{
-          whiteSpace: "pre-wrap",
-          textAlign: "justify",
-          marginBottom: "1rem",
-        }}
       />
-      <hr className="my-4" style={{ width: "100%", marginBottom: "1rem" }} />
-      <Form method="post" style={{ width: "100%", textAlign: "center" }}>
+      <hr className="w-full border-gray-300 mb-6 sm:mb-8" />
+      <Form method="post" className="w-full max-w-xs">
         <button
           type="submit"
-          className="rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 focus:bg-blue-400"
-          style={{
-            width: "100%",
-            maxWidth: "200px",
-            margin: "0 auto",
-          }}
+          className="w-full rounded bg-blue-500 px-4 py-2 sm:py-3 text-white hover:bg-blue-600 focus:bg-blue-400 transition-colors duration-200 font-medium"
         >
           Delete
         </button>
       </Form>
-
-      <style>{`
-        @media (max-width: 768px) {
-          div {
-            padding: 0.5rem;
-          }
-
-          img {
-            width: 200px;
-          }
-
-          h3 {
-            font-size: 1.5rem;
-          }
-
-          p {
-            font-size: 1rem;
-          }
-
-          button {
-            font-size: 1rem;
-          }
-        }
-
-        @media (max-width: 480px) {
-          div {
-            padding: 0.25rem;
-          }
-
-          img {
-            width: 150px;
-          }
-
-          h3 {
-            font-size: 1.25rem;
-          }
-
-          p {
-            font-size: 0.875rem;
-          }
-
-          button {
-            font-size: 0.875rem;
-          }
-        }
-      `}</style>
     </div>
   );
 }

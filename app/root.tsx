@@ -222,16 +222,16 @@ export default function App() {
               </>
             )}
 
-<Form method="get" action={getSearchAction()} className="flex">
+            <Form method="get" action={getSearchAction()} className="flex mt-4 sm:mt-0">
                 <input
                   type="text"
                   name="search"
                   placeholder={getSearchPlaceholder()}
-                  className="px-4 py-2 rounded-l-md border border-gray-300 text-black"
+                  className="w-38 sm:w-40 md:w-48 px-3 py-2 rounded-l-md border border-gray-300 text-black text-sm"
                 />
                 <button
                   type="submit"
-                  className="px-4 py-2 bg-blue-500 text-white rounded-r-md hover:bg-blue-600"
+                  className="px-3 py-2 bg-blue-500 text-white rounded-r-md hover:bg-blue-600 text-sm whitespace-nowrap"
                 >
                   Search
                 </button>

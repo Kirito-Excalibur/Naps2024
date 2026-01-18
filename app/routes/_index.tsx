@@ -168,7 +168,7 @@ export default function Index() {
                     >
                       <img src={note.thumbnail || "/images/thumb.jpeg"} alt="Thumbnail Here" />
                       <h2 className="font-bold text-lg mb-2">{note.title}</h2>
-                      <p className="text-sm text-gray-500">{note.user?.name}</p>
+                      <p className="text-sm text-gray-500">{note.author}</p>
                     </Link>
                   ))}
                 </div>
@@ -187,7 +187,7 @@ export default function Index() {
                     >
                       <img src={note.thumbnail || "/images/thumb.jpeg"} alt="Thumbnail Here" />
                       <h2 className="font-bold text-lg mb-2">{note.title}</h2>
-                      <p className="text-sm text-gray-500 break-words">{note.user?.name}</p>
+                      <p className="text-sm text-gray-500 break-words">{note.author}</p>
                     </Link>
                   ))}
                 </div>
