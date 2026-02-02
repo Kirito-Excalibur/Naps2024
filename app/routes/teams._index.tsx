@@ -20,7 +20,7 @@ function Teams() {
     { name: "Nidhi Devi", position: "General Secretary" },
   
     { name: "Garima Sablok", position: "Treasurer" },
-    { name: "Yash Shekhar", position: "Co-Treasurer" },
+    // { name: "Yash Shekhar", position: "Co-Treasurer" },
     { name: "Aditya Kumar", position: "Co-Treasurer" },
     { name: "Erina Firdos", position: "Deputy Editor" },
     { name: "Kumar Shubham", position: "Deputy Editor" },
